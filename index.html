@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gamblecore</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/components.css">
+        <link rel="icon" href="./assets/gamblecore.png">
+    </head>
+
+    <body>
+        <header>
+            <h1>Gamblecore</h1>
+        </header>
+        <div class="money-label top-label">
+            <p>$100.00</p>
+        </div>
+
+        <main>
+            <div class="game slotmachine unlockable">Free</div>
+            <div class="game coinflip unlockable">$150</div>
+            <div class="game roulette unlockable">$400</div>
+            <div class="game blackjack unlockable">$700</div>
+            <div class="game poker unlockable">$900</div>
+            <div class="game scratchcards locked">$1,500</div>
+            <div class="game bingo locked">$2,250</div>
+            <div class="game betting locked">$3,500</div>
+            <div class="game lottery locked">$5,000</div>
+        </main>
+
+        <footer>
+            <p></p>
+            <script>
+                const year = new Date().getFullYear();
+                document.querySelector('footer p').innerHTML = `&copy; ${year} Arpan Shah. All rights reserved.`;
+            </script>
+        </footer>
+
+        <div class="settings-toggle setting">
+            <abbr title="Show settings">
+                <img src="./assets/settings.svg" alt="Settings">
+            </abbr>
+        </div>
+        <div class="mute-btn setting">
+            <abbr title="Sound is on">
+                <img src="./assets/sound-on.svg" alt="Mute">
+            </abbr>
+        </div>
+        <div class="change-theme setting">
+            <abbr title="Change Theme">
+                <img src="./assets/switch-theme.svg" alt="Change Theme">
+            </abbr>
+        </div>
+
+        <div class="click-off-settings">
+            <div class="settings-div">
+                <h2>Settings</h2>
+                <p class="close-settings">X</p>
+                <div class="setting-option">
+                    <button class="red setting-btn restart">Restart</button>
+                    <button class="setting-btn save-to-json">Save to .json</button>
+                    <button class="setting-btn save-to-text">Save to .txt</button>
+                    <button class="green setting-btn load">Load from File</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="./js/utils.js"></script>
+        <script src="./js/script.js"></script>
+    </body>
+</html>
