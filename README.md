@@ -54,3 +54,8 @@ Gamblecore/
 8. Created Consistant Money Label
 9. Added icons to games
 10. Added dynamic footer
+11. Bug Fixes
+
+### Update 1.05 - 12/19/2025
+1. Made Compatiable with Github Pages
+2. Bug Fixes

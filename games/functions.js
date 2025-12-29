@@ -1,8 +1,8 @@
 const sfx = {
-    hover: new Audio("../assets/hover.mp3"),
-    click: new Audio("../assets/click.mp3"),
-    startingClick: new Audio("../assets/starting-click.mp3"),
-    endingClick: new Audio("../assets/ending-click.mp3"),
+    click: new Audio("../../assets/click.mp3"),
+    hover: new Audio("../../assets/hover.mp3"),
+    startingClick: new Audio("../../assets/starting-click.mp3"),
+    endingClick: new Audio("../../assets/ending-click.mp3"),
 }
 
 let sfxAbbr = document.querySelector(".mute-btn abbr");
@@ -28,7 +28,7 @@ themeToggle.addEventListener("click", () => {
 });
 menuBtn.addEventListener("click", () => {
     setTimeout(() => {
-        location.href = ``;
+        location.href = `../../../`;
     }, 150);
 });
 document.body.className = getCurrentTheme();
@@ -61,10 +61,10 @@ function addSFX(element, muteOverride = false, muteOverride2 = false, soundOverr
 }
 function checkSFX() {
     if (isMuted()) {
-        sfxSrc.src = "../assets/sound-off.svg";
+        sfxSrc.src = "../../assets/sound-off.svg";
         sfxAbbr.setAttribute("title", "Sound is off");
     } else {
-        sfxSrc.src = "../assets/sound-on.svg";
+        sfxSrc.src = "../../assets/sound-on.svg";
         sfxAbbr.setAttribute("title", "Sound is on");
     }
 }
