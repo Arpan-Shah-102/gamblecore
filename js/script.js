@@ -90,7 +90,7 @@ gameBtns.forEach((gameDiv, index) => {
                 alert(`You have successfully unlocked ${gameDiv.classList[1]}!`);
                 return;
             } else if (gameDiv.classList.contains("unlocked")) {
-                    location.href = `../games/${gameDiv.classList[1]}/index.html`;
+                location.href = `./games/${gameDiv.classList[1]}/index.html`;
             };
         }, 150);
     });

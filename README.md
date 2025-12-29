@@ -1,6 +1,6 @@
 # Gamblecore
 
-**Gamblecore** is a browser-based gambling game platform featuring multiple mini-games with a central hub. Players start with $100 and can unlock new games by earning money through gameplay.
+**Gamblecore** is a browser-based gambling game platform featuring multiple mini-games with a central hub. Players start with $1,000 and can unlock new games by earning money through gameplay.
 
 ## Features
 
@@ -40,3 +40,17 @@ Gamblecore/
 2. Click on unlocked games to play
 3. Earn money to unlock locked games
 4. Use settings to save progress, change theme, or mute audio
+
+## Update Log
+
+### Update 1.0 - 12/19/2025
+1. Added Game Select Menu
+2. Added Consistant Styling
+3. Creating a varible/functions sharing system
+4. Added settings
+5. Added Theme changing
+6. Added SFX
+7. Added paths to games and main menu buttons
+8. Created Consistant Money Label
+9. Added icons to games
+10. Added dynamic footer
