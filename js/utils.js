@@ -22,6 +22,10 @@ function setMoney(amount) {
 function enoughMoney(amount) {
     return getMoney() >= amount;
 }
+function updateMoneyLabel() {
+    let moneyLabel = document.querySelector(".money-label > p");
+    moneyLabel.textContent = moneyFormat(getMoney());
+}
 
 function getOwnedGames() {
     return JSON.parse(localStorage.getItem("ownedGames")) || [];
@@ -53,7 +57,7 @@ function setCurrentTheme(theme) {
     localStorage.setItem("theme", theme);
 }
 
-// getMoney(): moneyFormat(amount), calcMoney(amount, operation), setMoney(amount), enoughMoney(amount)
+// getMoney(): moneyFormat(amount), calcMoney(amount, operation), setMoney(amount), enoughMoney(amount), updateMoneyLabel()
 // getOwnedGames(): addGame(gameID), gameOwned(gameID)
 // isMuted(): toggleMute()
 // getCurrentTheme(): setCurrentTheme(theme)

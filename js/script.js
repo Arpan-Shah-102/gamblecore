@@ -27,11 +27,6 @@ themeToggle.addEventListener("click", () => {
 });
 document.body.className = getCurrentTheme();
 checkSFX();
-
-let moneyLabel = document.querySelector(".money-label > p");
-function updateMoneyLabel() {
-    moneyLabel.textContent = moneyFormat(getMoney());
-}
 updateMoneyLabel();
 
 function addSFX(element, muteOverride = false, muteOverride2 = false, soundOverride = false, soundOverride2 = false) {
@@ -143,8 +138,10 @@ settingsBtn.addEventListener("click", () => {
 closeSettingsBtn.addEventListener("click", () => {
     clickOffSettings.classList.remove("active");
 });
-clickOffSettings.addEventListener("click", () => {
-    clickOffSettings.classList.remove("active");
+clickOffSettings.addEventListener("click", (e) => {
+    if (e.target === clickOffSettings) {
+        clickOffSettings.classList.remove("active");
+    }
 });
 
 let settingButtons = document.querySelectorAll(".setting-btn");

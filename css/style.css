@@ -114,33 +114,6 @@ main {
     }
     & button {
         display: block;
-
-        &.red, &.green {
-            color: white;
-            &:hover {
-                transform: translate(2px, 2px);
-                box-shadow: none;
-            }
-            &:active {
-                transform: translate(4px, 4px);
-            }
-        }
-        &.red {
-            border-color: darkred;
-            box-shadow: 4px 4px 0px rgba(139, 0, 0, 0.5);
-            background-color: rgb(255, 87, 87);
-            &:active {
-                box-shadow: 4px 4px 0px rgba(139, 0, 0, 0.5) inset;
-            }
-        }
-        &.green {
-            border-color: darkgreen;
-            box-shadow: 4px 4px 0px rgba(0, 100, 0, 0.5);
-            background-color: rgb(106, 255, 106);
-            &:active {
-                box-shadow: 4px 4px 0px rgba(0, 100, 0, 0.5) inset;
-            }
-        }
     }
     & .close-settings {
         display: inline-block;

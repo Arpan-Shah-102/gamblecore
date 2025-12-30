@@ -28,17 +28,25 @@ themeToggle.addEventListener("click", () => {
 });
 menuBtn.addEventListener("click", () => {
     setTimeout(() => {
-        location.href = `../../../`;
+        location.href = `../../`;
     }, 150);
 });
+
+let gameLockedOverlay = document.querySelector(".game-locked");
+let closeLockedBtn = document.querySelector(".close-locked-btn");
+if (!gameOwned(gameLockedOverlay.classList[1])) {
+    gameLockedOverlay.classList.add("shown");
+}
+closeLockedBtn.addEventListener("click", () => {
+    setTimeout(() => {
+        location.href = `../../`;
+    }, 150);
+});
+
 document.body.className = getCurrentTheme();
 checkSFX();
 addSFX(menuBtn);
-
-let moneyLabel = document.querySelector(".money-label > p");
-function updateMoneyLabel() {
-    moneyLabel.textContent = moneyFormat(getMoney());
-}
+addSFX(closeLockedBtn);
 updateMoneyLabel();
 
 function addSFX(element, muteOverride = false, muteOverride2 = false, soundOverride = false, soundOverride2 = false) {

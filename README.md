@@ -43,7 +43,7 @@ Gamblecore/
 
 ## Update Log
 
-### Update 1.0 - 12/19/2025
+### Update 1.0 - 12/29/2025
 1. Added Game Select Menu
 2. Added Consistant Styling
 3. Creating a varible/functions sharing system
@@ -56,6 +56,10 @@ Gamblecore/
 10. Added dynamic footer
 11. Bug Fixes
 
-### Update 1.05 - 12/19/2025
+### Update 1.05 - 12/29/2025
 1. Made Compatiable with Github Pages
 2. Bug Fixes
+
+### Update 1.2 - 12/30/2025
+1. Blocked access to games if not owned
+2. Bug fixes
