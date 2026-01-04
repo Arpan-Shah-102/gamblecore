@@ -1,5 +1,5 @@
 function getMoney() {
-    return parseInt(localStorage.getItem("money")) || 1000;
+    return parseInt(localStorage.getItem("money") ?? 1000);
 }
 function moneyFormat(amount) {
     return amount.toLocaleString( "en-US", { style: "currency", currency: "USD" } );
@@ -61,3 +61,64 @@ function setCurrentTheme(theme) {
 // getOwnedGames(): addGame(gameID), gameOwned(gameID)
 // isMuted(): toggleMute()
 // getCurrentTheme(): setCurrentTheme(theme)
+
+function gameOverCheck() {
+
+}
+
+function getSlotSymbols() {
+    return JSON.parse(localStorage.getItem("slotSymbols")) || ["🍊", "🍉", "⭐", "💎", "🍒", "7️⃣"];
+}
+function randomSlotSymbol() {
+    return getSlotSymbols()[Math.floor(Math.random() * getSlotSymbols().length)];
+}
+function removeSlotSymbol() {
+    let symbols = getSlotSymbols();
+    symbols.pop();
+    localStorage.setItem("slotSymbols", JSON.stringify(symbols));
+}
+
+function getAutoSpinOwned() {
+    return localStorage.getItem("autoSpinOwned") === "true";
+}
+function setAutoSpinOwned(value) {
+    localStorage.setItem("autoSpinOwned", value ? "true" : "false");
+}
+
+function getJackpotPrize() {
+    return parseInt(localStorage.getItem("jackpotPrize")) || 50;
+}
+function setJackpotPrize(amount) {
+    localStorage.setItem("jackpotPrize", amount);
+}
+
+function getUpgradePrices() {
+    return JSON.parse(localStorage.getItem("upgradePrices")) || [200, 300, 400];
+}
+function setUpgradePrice(index, price) {
+    let prices = getUpgradePrices();
+    prices[index] = price;
+    localStorage.setItem("upgradePrices", JSON.stringify(prices));
+}
+function getUpgradeLevels() {
+    return JSON.parse(localStorage.getItem("upgradeLevels")) || [0, 1, 0];
+}
+function setUpgradeLevel(index, level) {
+    let levels = getUpgradeLevels();
+    levels[index] = level;
+    localStorage.setItem("upgradeLevels", JSON.stringify(levels));
+}
+function getMaxUpgradeLevels() {
+    return [1, 3, 3];
+}
+function getUpgradeValues() {
+    return JSON.parse(localStorage.getItem("upgradeValues")) || [getAutoSpinOwned(), 50, 0];
+}
+function setUpgradeValue(index, value) {
+    let values = getUpgradeValues();
+    values[index] = value;
+    localStorage.setItem("upgradeValues", JSON.stringify(values));
+}
+function getMaxUpgradeValues() {
+    return [true, 150, 3];
+}

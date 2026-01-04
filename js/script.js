@@ -3,6 +3,8 @@ const sfx = {
     click: new Audio("./assets/click.mp3"),
     startingClick: new Audio("./assets/starting-click.mp3"),
     endingClick: new Audio("./assets/ending-click.mp3"),
+    gameBought: new Audio("./assets/game-bought.mp3"),
+    cheat: new Audio("./assets/cheat.mp3"),
 }
 
 let sfxAbbr = document.querySelector(".mute-btn abbr");
@@ -74,16 +76,15 @@ gameBtns.forEach((gameDiv, index) => {
     gameDiv.addEventListener("click", () => {
         setTimeout(() => {
             if (gameDiv.classList.contains("locked")) {
-                alert("You do not have enough money to unlock this game.");
+                alert(`You do not have enough money to unlock ${gameDiv.classList[1]}.`);
             } else if (gameDiv.classList.contains("unlockable")) {
-                let confirmUnlock = confirm(`Are you sure you want to unlock this game for ${moneyFormat(gamePrices[index])}?`);
+                let confirmUnlock = confirm(`Are you sure you want to unlock ${gameDiv.classList[1]} for ${moneyFormat(gamePrices[index])}?`);
                 if (!confirmUnlock) return;
                 calcMoney(gamePrices[index], "-");
                 addGame(gameDiv.classList[1]);
                 updateMoneyLabel();
                 updateGameButtons();
-                alert(`You have successfully unlocked ${gameDiv.classList[1]}!`);
-                return;
+                playSound(sfx.gameBought);
             } else if (gameDiv.classList.contains("unlocked")) {
                 location.href = `./games/${gameDiv.classList[1]}/index.html`;
             };
@@ -127,11 +128,13 @@ observer.observe(document.body, {
 let settingsBtn = document.querySelector(".settings-toggle img");
 let closeSettingsBtn = document.querySelector(".settings-div .close-settings");
 let clickOffSettings = document.querySelector(".click-off-settings");
+let settingsTitle = document.querySelector(".settings-div h2");
 
 addSFX(closeSettingsBtn);
 addSFX(settingsBtn);
 addSFX(clickOffSettings, false, false, false, true);
 
+settingsTitle.addEventListener("click", moneySecret);
 settingsBtn.addEventListener("click", () => {
     clickOffSettings.classList.toggle("active");
 });
@@ -148,6 +151,26 @@ let settingButtons = document.querySelectorAll(".setting-btn");
 settingButtons.forEach(btn => {
     addSFX(btn);
 });
+
+let counter = 0;
+function moneySecret() {
+    counter++;
+    if (counter >= 25) {
+        calcMoney(1000000, "+");
+        updateMoneyLabel();
+        updateGameButtons();
+        counter = 0;
+        playSound(sfx.cheat);
+        document.body.style.display = "none";
+        setTimeout(() => {
+            document.   body.style.display = "block";
+        }, 250);
+        return;
+    }
+    setTimeout(() => {
+        counter = 0;
+    }, 5000);
+}
 
 if (document.body.classList.contains("dark")) {
     gameBtns.forEach(gameDiv => {

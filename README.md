@@ -16,10 +16,10 @@
 
 ```
 Gamblecore/
-├────── index.html
-├────── js/              # script.js, utils.js
-├────── css/             # components.css, style.css
-├────── assets/          # Icons (light/dark theme variants)
+├── index.html
+├── js/              # script.js, utils.js
+├── css/             # components.css, style.css
+├── assets/          # Icons (light/dark theme variants)
 └── games/               # Individual game folders
     ├── slotmachine/
     ├── coinflip/
@@ -53,7 +53,7 @@ Gamblecore/
 7. Added paths to games and main menu buttons
 8. Created Consistant Money Label
 9. Added icons to games
-10. Added dynamic footer
+10. Added dynamic footer year
 11. Bug Fixes
 
 ### Update 1.05 - 12/29/2025
@@ -63,3 +63,14 @@ Gamblecore/
 ### Update 1.2 - 12/30/2025
 1. Blocked access to games if not owned
 2. Bug fixes
+
+### Update 1.7 - 1/3/2026
+1. Added ability to buy games from blocked screen
+2. Added Slot Machine functionality
+3. Added Secret Sfx through codes
+4. Added Practice mode that doesn't use money
+5. Added Icons for made games in menu
+6. Added more sound effects
+7. Updated Alerts
+8. Added secret to get $1,000,000 for devs
+8. Bug fixes

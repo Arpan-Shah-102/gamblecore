@@ -26,8 +26,10 @@ body.dark {
 main {
     display: grid;
     grid-template-columns: repeat(auto-fit, 320px);
+    grid-template-rows: repeat(auto-fit, 180px);
     justify-content: center;
     gap: 100px;
+    min-height: calc(100vh - 220px);
 }
 .game {
     height: 180px;
@@ -104,6 +106,7 @@ main {
         text-align: center;
         margin: 10px;
         font-size: 36px;
+        user-select: none;
     }
     & > .setting-option {
         display: flex;

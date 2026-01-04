@@ -21,11 +21,68 @@
         </div>
 
         <main>
-            <p>aaa</p>
+            <section class="game-section">
+                <div class="slotmachine-body">
+                    <div class="half-circle">
+                        <div class="line a"></div>
+                        <div class="line b"></div>
+                        <div class="line c"></div>
+                        <div class="ball"></div>
+                    </div>
+                    <div class="reels">
+                        <div class="reel" id="reel1"><p>7️⃣</p></div>
+                        <div class="reel" id="reel2"><p>7️⃣</p></div>
+                        <div class="reel" id="reel3"><p>7️⃣</p></div>
+                    </div>
+                    <div class="result-message">
+                        <p>Spin to win!</p>
+                    </div>
+                    <div class="spin-cost">
+                        <p>Spin Cost: $2</p>
+                    </div>
+                </div>
+                <div class="spin-lever">
+                    <div class="lever-ball"></div>
+                </div>
+            </section>
+            <section class="shop game-feature-section">
+                <h2>Shop</h2>
+                <div class="block">
+                    <div class="shop-item container">
+                        <h3>Auto Spin</h3>
+                        <p class="item-cost">$200</p>
+                        <button class="shop-btns get-auto-spin red">Buy</button>
+                    </div>
+                    <div class="shop-item container">
+                        <h3>Increase Jackpot</h3>
+                        <p class="item-cost">$300</p>
+                        <button class="shop-btns increase-jackpot red">Buy</button>
+                    </div>
+                    <div class="shop-item container">
+                        <h3>Improve Odds</h3>
+                        <p class="item-cost">$400</p>
+                        <button class="shop-btns improve-odds red">Buy</button>
+                    </div>
+                </div>
+            </section>
+            <section class="stats game-feature-section">
+                <h2>Stats</h2>
+                <div class="block">
+                    <div class="stat-item container">
+                        <h3>Auto Spin: <button class="red status">Not Owned</button></h3>
+                    </div>
+                    <div class="stat-item container">
+                        <h3>Reward: $<span class="status">50</span>/150</h3>
+                    </div>
+                    <div class="stat-item container">
+                        <h3>Odds Upgrade Level: <span class="status">0</span>/3</h3>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer>
-            <p></p>
+            <p contenteditable="true"></p>
             <script>
                 const year = new Date().getFullYear();
                 document.querySelector('footer p').innerHTML = `&copy; ${year} Arpan Shah. All rights reserved.`;
@@ -42,12 +99,18 @@
                 <img src="../../assets/switch-theme.svg" alt="Change Theme">
             </abbr>
         </div>
+        <div class="practice-mode setting">
+            <abbr title="Practice mode is off">
+                <img src="../../assets/practice-mode-off.svg" alt="Practice Mode">
+            </abbr>
+        </div>
 
         <div class="game-locked slotmachine">
             <div class="inner-body">
                 <h2>You do not own this game</h2>
-                <p>This game is locked. Please unlock it from the main menu to play.</p>
+                <p>This game is locked. Please unlock it from the main menu or from here to play.</p>
                 <button class="close-locked-btn green">Menu</button>
+                <button class="unlock-game-with-locked red">Free</button>
             </div>
         </div>
         
