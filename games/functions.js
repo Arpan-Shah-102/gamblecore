@@ -91,6 +91,7 @@ if (currentGamePrice <= getMoney()) {
     unlockWithLockedBtn.classList.remove("red");
 }
 
+const currentYear = new Date().getFullYear();
 document.body.className = getCurrentTheme();
 checkSFX();
 addSFX(menuBtn);

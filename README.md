@@ -74,3 +74,11 @@ Gamblecore/
 7. Updated Alerts
 8. Added secret to get $1,000,000 for devs
 8. Bug fixes
+
+### Update 1.9 - 1/5/2025
+1. Added Help Menu for sfx footer command by typing "h" or "help"
+2. Added new Sfx (d), victrin
+3. Improved mobile UI scaleing
+4. Worked on coinflip game UI
+5. Added Coinflip light mode and darkmode popup to the menu
+6. Bug Fixes

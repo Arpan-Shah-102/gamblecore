@@ -133,6 +133,7 @@
 }
 .game-section {
     position: relative;
+    overflow: hidden;
 }
 .spin-lever {
     position: absolute;
@@ -145,6 +146,7 @@
     background-color: brown;
     cursor: pointer;
     border-radius: 8px;
+    will-change: transform;
     transform-origin: bottom center;
     transform: rotate(25deg);  
 

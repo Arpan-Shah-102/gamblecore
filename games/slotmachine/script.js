@@ -16,6 +16,12 @@ const adarshaSfx = {
     slotSpinning: new Audio("../assets/sfx/slotmachine/adarsha/slots-spinning.wav"),
     slotLoad: new Audio("../assets/sfx/slotmachine/adarsha/slot-load.wav"),
 }
+const victrinSfx = {
+    spin: new Audio("../assets/sfx/slotmachine/victrin/pull-lever.mp3"),
+    win: new Audio("../assets/sfx/slotmachine/victrin/win.mp3"),
+    slotSpinning: new Audio("../assets/sfx/slotmachine/victrin/slots-spinning.mp3"),
+    slotLoad: new Audio("../assets/sfx/slotmachine/victrin/slot-load.mp3"),
+}
 let slotSfx = {
     spin: deafultSfx.spin,
     win: deafultSfx.win,
@@ -276,36 +282,59 @@ function toggleAutoSpin() {
     }
 }
 
+const defaultFooterText = `&copy; ${currentYear} Arpan Shah. All rights reserved.`;
 let footerText = document.querySelector("footer p");
 footerText.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
-        text = footerText.textContent.toLocaleLowerCase();
+        originalText = footerText.textContent.toLocaleLowerCase().trim();
+        text = footerText.textContent.toLocaleLowerCase().trim().split(/\s+/);
         e.preventDefault();
         footerText.blur();
 
-        if (["load-sound-profile: a", "lsp a", "loadsoundprofile(a)"].includes(text)) {
+        if (originalText == "h" || originalText == "help") {
+            footerText.innerHTML = defaultFooterText;
+            playSound(sfx.gameBought);
+            setTimeout(() => {alert("Available Commands:\n\n1. load-sound-profile: [a/b/c/d] or lsp [a/b/c/d]\n\n'a' or no argument: Default SFX Profile\n'b': Puspa SFX Profile\n'c': Adarsha SFX Profile\n'd': Victrin SFX Profile");}, 150);
+            return;
+        }
+        if (["load-sound-profile:", "lsp"].includes(text[0])) {
+            if (text[1] == "a" || text[1] == undefined) {
+                loadSfxProfile(deafultSfx);
+            } else if (text[1] == "b") {
+                loadSfxProfile(puspaSfx);
+            } else if (text[1] == "c") {
+                loadSfxProfile(adarshaSfx);
+            } else if (text[1] == "d") {
+                loadSfxProfile(victrinSfx);
+            }
+            playSound(slotSfx.win);
+            footerText.textContent = "SFX profile changed!";
+            setTimeout(() => {
+                if (footerText.textContent !== "SFX profile changed!") return;
+                footerText.innerHTML = defaultFooterText;
+            }, 7500);
+        } else if (text[0] == "load-sound-profile") {
             loadSfxProfile(deafultSfx);
-        } else if (["load-sound-profile: b", "lsp b", "loadsoundprofile(b)"].includes(text)) {
-            loadSfxProfile(puspaSfx);
-        } else if (["load-sound-profile: c", "lsp c", "loadsoundprofile(c)"].includes(text)) {
-            loadSfxProfile(adarshaSfx);
+            playSound(slotSfx.win);
+            footerText.textContent = "SFX profile changed!";
+            setTimeout(() => {
+                if (footerText.textContent !== "SFX profile changed!") return;
+                footerText.innerHTML = defaultFooterText;
+            }, 7500);
         } else {
             footerText.textContent = "Wrong command!";
             footerText.contentEditable = "false";
             playSound(sfx.cheat);
             setTimeout(() => {
-                const year = new Date().getFullYear();
-                footerText.innerHTML = `&copy; ${year} Arpan Shah. All rights reserved.`;
+                footerText.innerHTML = defaultFooterText;
                 footerText.contentEditable = "true"; 
             }, 7500);
             return;
         }
-        playSound(slotSfx.win);
-        footerText.textContent = "SFX profile changed!";
-        setTimeout(() => {
-            if (footerText.textContent !== "SFX profile changed!") return;
-            const year = new Date().getFullYear();
-            footerText.innerHTML = `&copy; ${year} Arpan Shah. All rights reserved.`;
-        }, 7500);
+    }
+});
+footerText.addEventListener("blur", () => {
+    if (footerText.textContent == "") {
+        footerText.innerHTML = defaultFooterText;
     }
 });

@@ -73,9 +73,15 @@ main {
         text-shadow: none;
     }
 }
-.game.slotmachine {
-    background-image: url("../assets/light/slotmachine.png");
-}
+.game.slotmachine {background-image: url("../assets/light/slotmachine.png");}
+.game.coinflip {background-image: url("../assets/light/coinflip.png");}
+.game.roulette {background-image: url("../assets/light/roulette.png");}
+.game.blackjack {background-image: url("../assets/light/blackjack.png");}
+.game.poker {background-image: url("../assets/light/poker.png");}
+.game.scratchcards {background-image: url("../assets/light/scratchcards.png");}
+.game.bingo {background-image: url("../assets/light/bingo.png");}
+.game.betting {background-image: url("../assets/light/betting.png");}
+.game.lottery {background-image: url("../assets/light/lottery.png");}
 
 .click-off-settings {
     position: fixed;
