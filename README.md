@@ -82,3 +82,9 @@ Gamblecore/
 4. Worked on coinflip game UI
 5. Added Coinflip light mode and darkmode popup to the menu
 6. Bug Fixes
+
+### Update 2.0 - 1/6/2025
+1. Added Sfx for Jacob
+2. Improved UI scaling for smaller devices
+3. Added UI scaling for larger devices
+4. Bug fixes

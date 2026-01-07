@@ -67,7 +67,7 @@ function gameOverCheck() {
 }
 
 function getSlotSymbols() {
-    return JSON.parse(localStorage.getItem("slotSymbols")) || ["🍊", "🍉", "⭐", "💎", "🍒", "7️⃣"];
+    return JSON.parse(localStorage.getItem("slotSymbols")) || ["7️⃣", "🍒", "💎", "⭐", "🍉", "🍊"];
 }
 function randomSlotSymbol() {
     return getSlotSymbols()[Math.floor(Math.random() * getSlotSymbols().length)];

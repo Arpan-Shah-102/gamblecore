@@ -28,12 +28,14 @@ main {
     grid-template-columns: repeat(auto-fit, 320px);
     grid-template-rows: repeat(auto-fit, 180px);
     justify-content: center;
-    gap: 100px;
+    gap: 50px;
+    padding-bottom: 50px;
     min-height: calc(100vh - 220px);
 }
 .game {
     height: 180px;
     width: 320px;
+    margin: 25px;
     border: 4px solid black;
     border-radius: 4px;
     box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
@@ -86,7 +88,7 @@ main {
 .click-off-settings {
     position: fixed;
     top: 0;
-    left: -100vw;
+    left: -150vw;
     width: 100vw;
     height: 100vh;
     z-index: 99;
@@ -147,4 +149,51 @@ main {
 }
 .settings-toggle {
     right: 0px;
+}
+
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: repeat(auto-fit, 240px);
+        grid-template-rows: repeat(auto-fit, 140px);
+        gap: 50px;
+    }
+    .game {
+        height: 140px;
+        width: 240px;
+        font-size: 48px;
+        line-height: 140px;
+    }
+    .settings-div {
+        width: 240px;
+
+        & h2 {
+            font-size: 24px;
+        }
+        & button {
+            font-size: 14px;
+        }
+    }
+}
+@media (min-width: 1280px) {
+    main {
+        grid-template-columns: repeat(auto-fit, 400px);
+        grid-template-rows: repeat(auto-fit, 220px);
+        gap: 150px;
+    }
+    .game {
+        height: 220px;
+        width: 400px;
+        font-size: 80px;
+        line-height: 220px;
+    }
+    .settings-div {
+        width: 400px;
+
+        & h2 {
+            font-size: 48px;
+        }
+        & button {
+            font-size: 18px;
+        }
+    }
 }

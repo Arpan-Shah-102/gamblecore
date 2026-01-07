@@ -22,6 +22,12 @@ const victrinSfx = {
     slotSpinning: new Audio("../assets/sfx/slotmachine/victrin/slots-spinning.mp3"),
     slotLoad: new Audio("../assets/sfx/slotmachine/victrin/slot-load.mp3"),
 }
+const jacobSfx = {
+    spin: new Audio("../assets/sfx/slotmachine/jacob/pull-lever.mp3"),
+    win: new Audio("../assets/sfx/slotmachine/jacob/win.mp3"),
+    slotSpinning: new Audio("../assets/sfx/slotmachine/jacob/slots-spinning.mp3"),
+    slotLoad: new Audio("../assets/sfx/slotmachine/jacob/slot-load.mp3"),
+}
 let slotSfx = {
     spin: deafultSfx.spin,
     win: deafultSfx.win,
@@ -294,7 +300,7 @@ footerText.addEventListener("keydown", (e) => {
         if (originalText == "h" || originalText == "help") {
             footerText.innerHTML = defaultFooterText;
             playSound(sfx.gameBought);
-            setTimeout(() => {alert("Available Commands:\n\n1. load-sound-profile: [a/b/c/d] or lsp [a/b/c/d]\n\n'a' or no argument: Default SFX Profile\n'b': Puspa SFX Profile\n'c': Adarsha SFX Profile\n'd': Victrin SFX Profile");}, 150);
+            setTimeout(() => {alert("Available Commands:\n\n1. load-sound-profile: [a/b/c/d/e] or lsp [a/b/c/d/e]\n\n'a' or no argument: Default SFX Profile\n'b': Puspa SFX Profile\n'c': Adarsha SFX Profile\n'd': Victrin SFX Profile\n'e': Jacob SFX Profile");}, 150);
             return;
         }
         if (["load-sound-profile:", "lsp"].includes(text[0])) {
@@ -306,6 +312,8 @@ footerText.addEventListener("keydown", (e) => {
                 loadSfxProfile(adarshaSfx);
             } else if (text[1] == "d") {
                 loadSfxProfile(victrinSfx);
+            } else if (text[1] == "e") {
+                loadSfxProfile(jacobSfx);
             }
             playSound(slotSfx.win);
             footerText.textContent = "SFX profile changed!";

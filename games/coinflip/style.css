@@ -2,8 +2,9 @@
     flex-direction: column;
 
     & .coin {
-        height: 300px;
-        width: 300px;
+        height: min(300px, 40vh);
+        width: min(300px, 40vh);
+        aspect-ratio: 1/1;
         border: 16px solid;
         border-radius: 100%;
         box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.5);
@@ -25,8 +26,8 @@
         }
 
         & img {
-            height: 200px;
-            width: 200px;
+            height: min(200px, 30vh);
+            width: min(200px, 30vh);
             position: absolute;
             filter: brightness(0);
             opacity: 0.25;
@@ -110,3 +111,11 @@ button.selected {
     opacity: 1;
     transform: scale(1.1);
 }
+
+@media (max-width: 480px) {
+    section {
+        transform: scale(0.75);
+        margin: 20px;
+    }
+}
+
