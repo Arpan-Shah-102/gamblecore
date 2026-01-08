@@ -10,7 +10,6 @@
         box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.5);
         cursor: pointer;
         position: relative;
-        /* animation: flip-coin 2s ease-in-out; */
 
         display: flex;
         justify-content: center;
@@ -23,6 +22,9 @@
         &.tails {
             background-color: rgb(221, 71, 71);
             border-color: rgb(83, 0, 0);
+        }
+        &.flipping {
+            animation: flip-coin 2s ease-in-out;
         }
 
         & img {

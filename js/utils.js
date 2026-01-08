@@ -122,3 +122,17 @@ function setUpgradeValue(index, value) {
 function getMaxUpgradeValues() {
     return [true, 150, 3];
 }
+
+// getSlotSymbols(): randomSlotSymbol(), removeSlotSymbol()
+// getAutoSpinOwned(): setAutoSpinOwned(value)
+// getJackpotPrize(): setJackpotPrize(amount)
+// getUpgradePrices(): setUpgradePrice(index, price), getUpgradeLevels(), setUpgradeLevel(index, level), getMaxUpgradeLevels(), getUpgradeValues(), setUpgradeValue(index, value), getMaxUpgradeValues()
+
+function getCoinChance(side = "heads") {
+    return parseInt(localStorage.getItem(`${side}Chance`)) || 50;
+}
+function getSelectedSideAndBet() {
+    let selectedSide = localStorage.getItem("selectedCoinSide") || "heads";
+    let betAmount = parseInt(localStorage.getItem("coinBetAmount")) || 10;
+    return {side: selectedSide, bet: betAmount};
+}

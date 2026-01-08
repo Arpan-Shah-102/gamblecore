@@ -88,3 +88,8 @@ Gamblecore/
 2. Improved UI scaling for smaller devices
 3. Added UI scaling for larger devices
 4. Bug fixes
+
+### Update 2.05 - 1/7/2025
+1. Added Coinflip Mechanism (Changing bet and bet side doesn't work)
+2. Added New SFX
+3. Bug fixes
