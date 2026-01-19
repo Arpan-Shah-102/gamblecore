@@ -418,7 +418,7 @@ button {
         }
     }
 }
-@media (min-width: 1280px) {
+@media (min-width: 1520px) {
     .game-section {
         height: calc(100vh - 280px);
         transform: scale(1.25);

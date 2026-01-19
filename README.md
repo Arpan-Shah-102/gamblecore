@@ -43,6 +43,8 @@ Gamblecore/
 
 ## Update Log
 
+### Daily Updates as Always!
+
 ### Update 1.0 - 12/29/2025
 1. Added Game Select Menu
 2. Added Consistant Styling
@@ -93,3 +95,9 @@ Gamblecore/
 1. Added Coinflip Mechanism (Changing bet and bet side doesn't work)
 2. Added New SFX
 3. Bug fixes
+
+### Update 2.1 - 1/19/2026
+1. Added ability to change coinflip side and bet
+2. Updated large screen UI scaling
+3. Fixed coin flipping while aleady flipping
+4. Bug fixes

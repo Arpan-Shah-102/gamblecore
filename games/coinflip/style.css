@@ -62,9 +62,11 @@
 @keyframes flip-coin {
     0% {
         transform: rotateX(0deg);
+        cursor: not-allowed;
     }
     100% {
         transform: rotateX(1080deg);
+        cursor: not-allowed;
     }
 }
 

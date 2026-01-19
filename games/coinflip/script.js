@@ -26,6 +26,7 @@ function flipCoin() {
         coin.classList.add("flipping");
         coinResult.textContent = "";
         playSound(coinSfx.flip);
+        coin.removeEventListener("click", flipCoin);
 
         for (let i = 0; i < 20; i++) {
             setTimeout(() => {
@@ -52,11 +53,45 @@ function flipCoin() {
                 playSound(coinSfx.lose);
             }
             updateThings();
+            coin.addEventListener("click", flipCoin);
         }, 2000);
     }
 }
 
+betAmountInput.addEventListener("input", () => {
+    setTimeout(() => {
+        let newBet = parseInt(betAmountInput.value);
+        if (newBet < 1 || newBet > 1000 || isNaN(newBet)) {
+            betAmountInput.value = selectedSideAndBet.bet;
+            return;
+        }
+        setSelectedSideAndBet(selectedSideAndBet.side, newBet);
+        selectedSideAndBet = getSelectedSideAndBet();
+    }, 1000);
+});
+
+selectSideBtns.forEach(element => {
+    addSFX(element);
+    element.addEventListener("click", () => {switchBet(element);});
+});
+
+function switchBet(btn) {
+    console.log(btn.classList);
+    let newSide = btn.classList.contains("heads-btn") ? "heads" : "tails";
+    setSelectedSideAndBet(newSide, selectedSideAndBet.bet);
+    selectedSideAndBet = getSelectedSideAndBet();
+    updateThings();
+}
+
 function updateThings() {
+    betAmountInput.value = selectedSideAndBet.bet;
+    if (selectedSideAndBet.side === "heads") {
+        selectSideBtns[0].classList.add("selected");
+        selectSideBtns[1].classList.remove("selected");
+    } else {
+        selectSideBtns[1].classList.add("selected");
+        selectSideBtns[0].classList.remove("selected");
+    }
     updateMoneyLabel();
 }
 updateThings();

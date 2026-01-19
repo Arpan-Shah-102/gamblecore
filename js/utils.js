@@ -136,3 +136,7 @@ function getSelectedSideAndBet() {
     let betAmount = parseInt(localStorage.getItem("coinBetAmount")) || 10;
     return {side: selectedSide, bet: betAmount};
 }
+function setSelectedSideAndBet(side, bet) {
+    localStorage.setItem("selectedCoinSide", side);
+    localStorage.setItem("coinBetAmount", bet);
+}
