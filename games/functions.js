@@ -134,3 +134,76 @@ function playSound(sound, muteOveride = false) {
         s.remove();
     });
 }
+
+const defaultFooterText = `&copy; ${currentYear} Arpan Shah. All rights reserved.`;
+let footerText = document.querySelector("footer p");
+footerText.contentEditable = "true";
+const referencesSfx = {
+    jojo: new Audio("../assets/references/jojo.mp3"),
+    omg: new Audio("../assets/references/oh-my-god.mp3"),
+    starPlatinum: new Audio("../assets/references/star-platinum.mp3"),
+    theWorld: new Audio("../assets/references/the-world.mp3"),
+    lero: new Audio("../assets/references/lero-lero-lero.mp3"),
+    amani: new Audio("../assets/references/amani.mp3"),
+}
+footerText.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        text = footerText.textContent.toLocaleLowerCase().trim();
+        e.preventDefault();
+        footerText.blur();
+
+        if (text == "r" || text == "references") {
+            footerText.innerHTML = defaultFooterText;
+            playSound(sfx.gameBought);
+            setTimeout(() => {alert("Available references:\n\n1. jojo || jojos\n2. oh my god || omg\n3. start platinum\n4. the world\n5. lero\n6. amani");}, 150);
+            return;
+        } else if (text == "jojo" || text == "jojos") {
+            playSound(referencesSfx.jojo);
+            footerText.textContent = "JoJo's!";
+            setTimeout(() => {
+                if (footerText.textContent !== "JoJo's!") return;
+                footerText.innerHTML = defaultFooterText;
+            }, 7500);
+        } else if (text == "oh my god" || text == "omg") {
+            playSound(referencesSfx.omg);
+            footerText.textContent = "Oh My God!";
+            setTimeout(() => {
+                if (footerText.textContent !== "Oh My God!") return;
+                footerText.innerHTML = defaultFooterText;
+            }, 7500);
+        } else if (text == "star platinum") {
+            playSound(referencesSfx.starPlatinum);
+            footerText.textContent = "URA!";
+            setTimeout(() => {
+                if (footerText.textContent !== "URA!") return;
+                footerText.innerHTML = defaultFooterText;
+            }, 7500);
+        } else if (text == "the world") {
+            playSound(referencesSfx.theWorld);
+            footerText.textContent = "ZA WARUDO!";
+            setTimeout(() => {
+                if (footerText.textContent !== "ZA WARUDO!") return;
+                footerText.innerHTML = defaultFooterText;
+            }, 7500);
+        } else if (text == "lero") {
+            playSound(referencesSfx.lero);
+            footerText.textContent = "Lero Lero Lero!";
+            setTimeout(() => {
+                if (footerText.textContent !== "Lero Lero Lero!") return;
+                footerText.innerHTML = defaultFooterText;
+            }, 7500);
+        } else if (text == "amani") {
+            playSound(referencesSfx.amani);
+            footerText.textContent = "I'm sorry, Amani.";
+            setTimeout(() => {
+                if (footerText.textContent !== "I'm sorry, Amani.") return;
+                footerText.innerHTML = defaultFooterText;
+            }, 7500);
+        }
+    }
+});
+footerText.addEventListener("blur", () => {
+    if (footerText.textContent == "") {
+        footerText.innerHTML = defaultFooterText;
+    }
+});

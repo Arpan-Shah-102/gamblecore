@@ -129,8 +129,24 @@ function getMaxUpgradeValues() {
 // getUpgradePrices(): setUpgradePrice(index, price), getUpgradeLevels(), setUpgradeLevel(index, level), getMaxUpgradeLevels(), getUpgradeValues(), setUpgradeValue(index, value), getMaxUpgradeValues()
 
 function getCoinChance(side = "heads") {
-    return parseInt(localStorage.getItem(`${side}Chance`)) || 50;
+    return 50 + getSideLevels()[side];
 }
+function getSideLevels() {
+    return JSON.parse(localStorage.getItem("sideLevels")) || {heads: 0, tails: 0};
+}
+function setSideLevel(side, level) {
+    let levels = getSideLevels();
+    levels[side] = level;
+    localStorage.setItem("sideLevels", JSON.stringify(levels));
+}
+
+function getMinMaxSideLevel() {
+    return {min: -25, max: 25};
+}
+function getSideCosts() {
+    return [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1400, 1600, 1800, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 10000];
+}
+
 function getSelectedSideAndBet() {
     let selectedSide = localStorage.getItem("selectedCoinSide") || "heads";
     let betAmount = parseInt(localStorage.getItem("coinBetAmount")) || 10;
@@ -140,3 +156,10 @@ function setSelectedSideAndBet(side, bet) {
     localStorage.setItem("selectedCoinSide", side);
     localStorage.setItem("coinBetAmount", bet);
 }
+
+// getCoinChance(side)
+// getSideLevels(): setSideLevel(side, level)
+// getMinMaxSideLevel(), getSideCosts()
+// getSelectedSideAndBet(): setSelectedSideAndBet(side, bet)
+
+

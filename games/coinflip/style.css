@@ -1,3 +1,11 @@
+.dark {
+    & .bet-amount {
+        background-color: rgba(255, 255, 255, 0.25) !important;
+        border-bottom: 4px solid white !important;
+        color: white !important;
+    }
+}
+
 .game-section {
     flex-direction: column;
 
@@ -114,6 +122,24 @@
 button.selected {
     opacity: 1;
     transform: scale(1.1);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.opacity-50 {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.upgrades {
+    & h3 {
+        font-size: 24px;
+    }
 }
 
 @media (max-width: 480px) {

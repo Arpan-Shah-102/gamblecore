@@ -197,7 +197,7 @@ button {
     text-align: center;
     transition: all 0.1s ease-in-out;
     background: no-repeat center / cover;
-    font-weight: bold   ;
+    font-weight: bold;
 
     &:hover {
         transform: translate(2px, 2px);
@@ -328,6 +328,8 @@ button {
         justify-content: space-evenly;
         align-items: center;
         flex-wrap: wrap;
+        padding: 20px 0px;
+        gap: 20px;
     }
 }
 .container {
@@ -335,10 +337,10 @@ button {
     border-radius: 8px;
     box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
     padding: 20px;
-    margin: 20px;
     min-width: 300px;
     max-width: 400px;
     height: 200px;
+    margin: 20px 0px;
 }
 
 
@@ -412,7 +414,7 @@ button {
     }
     .game-feature-section {
         padding: 30px 0px;
-        margin: auto 10px;
+        margin: auto 0px;
         & > h2 {
             font-size: 24px;
         }

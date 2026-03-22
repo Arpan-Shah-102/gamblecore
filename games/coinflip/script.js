@@ -21,8 +21,11 @@ coin.addEventListener("click", flipCoin);
 
 function flipCoin() {
     if (enoughMoney(selectedSideAndBet.bet)) {
-        calcMoney(selectedSideAndBet.bet, "-");
-        updateMoneyLabel();
+        if (!practiceMode) {
+            calcMoney(selectedSideAndBet.bet, "-");
+            updateMoneyLabel();
+        }
+        chance = getCoinChance();
         coin.classList.add("flipping");
         coinResult.textContent = "";
         playSound(coinSfx.flip);
@@ -45,18 +48,26 @@ function flipCoin() {
             coinImg.src = flipResult === "heads" ? coinImgs.heads : coinImgs.tails;
 
             if (flipResult === selectedSideAndBet.side) {
-                coinResult.textContent = `You won ${practiceMode ? 0 : moneyFormat(selectedSideAndBet.bet * (100 / chance))}`;
+                coinResult.textContent = `You won${practiceMode ? "!" : ` ${moneyFormat(selectedSideAndBet.bet * 2)}`}`;
                 playSound(coinSfx.win);
-                calcMoney(selectedSideAndBet.bet * (100 / chance), "+");
+                if (!practiceMode) {
+                    calcMoney(selectedSideAndBet.bet * 2, "+");
+                }
             } else if (flipResult !== selectedSideAndBet.side) {
-                coinResult.textContent = `You lost ${practiceMode ? 0 : moneyFormat(selectedSideAndBet.bet)}`;
+                coinResult.textContent = `You lost${practiceMode ? "!" : ` ${moneyFormat(selectedSideAndBet.bet)}`}`;
                 playSound(coinSfx.lose);
             }
-            updateThings();
+            if (!practiceMode) {updateThings();}
             coin.addEventListener("click", flipCoin);
         }, 2000);
     }
 }
+
+practiceModeToggle.addEventListener("click", () => {
+    betAmountInput.value = practiceMode ? "0" : selectedSideAndBet.bet;
+    betAmountInput.classList.toggle("opacity-50");
+    betAmountInput.attributes["readonly"] ? betAmountInput.removeAttribute("readonly") : betAmountInput.setAttribute("readonly", true);
+});
 
 betAmountInput.addEventListener("input", () => {
     setTimeout(() => {
@@ -67,7 +78,7 @@ betAmountInput.addEventListener("input", () => {
         }
         setSelectedSideAndBet(selectedSideAndBet.side, newBet);
         selectedSideAndBet = getSelectedSideAndBet();
-    }, 1000);
+    }, 1500);
 });
 
 selectSideBtns.forEach(element => {
@@ -83,6 +94,76 @@ function switchBet(btn) {
     updateThings();
 }
 
+let upgradeContainers = document.querySelectorAll(".upgrades");
+let upgradeChances = document.querySelectorAll(".upgrades .chance");
+let upgradeLevels = document.querySelectorAll(".upgrades .level");
+let upgradeButtons = document.querySelectorAll(".upgrades .upgrade-btn");
+
+upgradeButtons.forEach(btn => {addSFX(btn);});
+upgradeButtons.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+        let side = index === 0 ? "heads" : "tails";
+        let sideLevels = getSideLevels();
+        let currentLevel = sideLevels[side];
+        let cost = getSideCosts()[Math.abs(currentLevel) - (currentLevel < 0 ? 1 : 0)];
+
+        if (currentLevel == getMinMaxSideLevel().max) {
+            alert("This side is already at max level.");
+            return;
+        };
+        if (enoughMoney(cost)) {
+            if (practiceMode) {
+                choice = confirm("Are you sure you want to unlock? This will still take away from your total money.");
+                if (!choice) {
+                    return;
+                }
+            }
+            calcMoney(cost, "-");
+            if (practiceMode) {
+                alert(`Money left: $${moneyFormat(getMoney())}`);
+            } else {
+                updateMoneyLabel();
+            }
+            if (currentLevel < 0) {
+                setSideLevel(side, currentLevel + 1);
+                setSideLevel(index == 0 ? "tails" : "heads", getSideLevels()[index == 0 ? "tails" : "heads"] - 1);
+            } else {
+                setSideLevel(side, currentLevel + 1);
+                setSideLevel(index == 0 ? "tails" : "heads", getSideLevels()[index == 0 ? "tails" : "heads"] - 1);
+            }
+            updateUpgradeContainers();
+        }
+    });
+});
+
+function updateUpgradeContainers() {
+    upgradeContainers.forEach((side, index) => {
+        upgradeChances[index].textContent = 50 + getSideLevels()[index === 0 ? "heads" : "tails"];
+        upgradeLevels[index].textContent = getSideLevels()[index === 0 ? "heads" : "tails"];
+        
+        if (getSideLevels()[index === 0 ? "heads" : "tails"] === getMinMaxSideLevel().max) {
+            upgradeButtons[index].textContent = "Max Level";
+            upgradeButtons[index].classList.remove("red", "green");
+        } else if (getSideLevels()[index === 0 ? "heads" : "tails"] == getMinMaxSideLevel().min) {
+            upgradeButtons[index].textContent = `Upgrade: ${moneyFormat(getSideCosts()[Math.abs(getSideLevels()[index === 0 ? "heads" : "tails"]) - 1])}`;
+        } else if (getSideLevels()[index === 0 ? "heads" : "tails"] < 0) {
+            upgradeButtons[index].textContent = `Upgrade: ${moneyFormat(getSideCosts()[Math.abs(getSideLevels()[index === 0 ? "heads" : "tails"]) - 1])}`;
+        } else {
+            upgradeButtons[index].textContent = `Upgrade: ${moneyFormat(getSideCosts()[Math.abs(getSideLevels()[index === 0 ? "heads" : "tails"])])}`;
+        }
+
+        if (getSideLevels()[index === 0 ? "heads" : "tails"] === getMinMaxSideLevel().max) {
+            upgradeButtons[index].classList.remove("red");
+            upgradeButtons[index].classList.remove("green");
+        } else if (getMoney() >= getSideCosts()[Math.abs(getSideLevels()[index === 0 ? "heads" : "tails"]) - (getSideLevels()[index === 0 ? "heads" : "tails"] < 0 ? 1 : 0)]) {
+            upgradeButtons[index].classList.add("green");
+            upgradeButtons[index].classList.remove("red");
+        } else if (getMoney() < getSideCosts()[Math.abs(getSideLevels()[index === 0 ? "heads" : "tails"]) - (getSideLevels()[index === 0 ? "heads" : "tails"] < 0 ? 1 : 0)]) {
+            upgradeButtons[index].classList.add("red");
+            upgradeButtons[index].classList.remove("green");
+        }
+    });
+}
 function updateThings() {
     betAmountInput.value = selectedSideAndBet.bet;
     if (selectedSideAndBet.side === "heads") {
@@ -93,5 +174,6 @@ function updateThings() {
         selectSideBtns[0].classList.remove("selected");
     }
     updateMoneyLabel();
+    updateUpgradeContainers();
 }
 updateThings();

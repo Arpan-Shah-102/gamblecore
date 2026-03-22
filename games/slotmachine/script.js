@@ -288,8 +288,6 @@ function toggleAutoSpin() {
     }
 }
 
-const defaultFooterText = `&copy; ${currentYear} Arpan Shah. All rights reserved.`;
-let footerText = document.querySelector("footer p");
 footerText.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         originalText = footerText.textContent.toLocaleLowerCase().trim();
@@ -329,15 +327,6 @@ footerText.addEventListener("keydown", (e) => {
                 if (footerText.textContent !== "SFX profile changed!") return;
                 footerText.innerHTML = defaultFooterText;
             }, 7500);
-        } else {
-            footerText.textContent = "Wrong command!";
-            footerText.contentEditable = "false";
-            playSound(sfx.cheat);
-            setTimeout(() => {
-                footerText.innerHTML = defaultFooterText;
-                footerText.contentEditable = "true"; 
-            }, 7500);
-            return;
         }
     }
 });
