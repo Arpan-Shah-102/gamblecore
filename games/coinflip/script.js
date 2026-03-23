@@ -177,3 +177,8 @@ function updateThings() {
     updateUpgradeContainers();
 }
 updateThings();
+
+footerText.addEventListener("click", () => {
+    check2 = true;
+    wrongFooterCommand();
+});

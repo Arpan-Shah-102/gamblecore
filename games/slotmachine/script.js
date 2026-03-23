@@ -327,11 +327,9 @@ footerText.addEventListener("keydown", (e) => {
                 if (footerText.textContent !== "SFX profile changed!") return;
                 footerText.innerHTML = defaultFooterText;
             }, 7500);
+        } else {
+            check2 = true;
+            wrongFooterCommand();
         }
-    }
-});
-footerText.addEventListener("blur", () => {
-    if (footerText.textContent == "") {
-        footerText.innerHTML = defaultFooterText;
     }
 });

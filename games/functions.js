@@ -144,7 +144,23 @@ const referencesSfx = {
     starPlatinum: new Audio("../assets/references/star-platinum.mp3"),
     theWorld: new Audio("../assets/references/the-world.mp3"),
     lero: new Audio("../assets/references/lero-lero-lero.mp3"),
+    steelBallRun: new Audio("../assets/references/steel-ball-run.mp3"),
     amani: new Audio("../assets/references/amani.mp3"),
+}
+let check1 = false;
+let check2 = false;
+
+function wrongFooterCommand() {
+    if (check1 && check2) {
+        playSound(sfx.cheat);
+        footerText.textContent = "Invalid Command!";
+        check1 = false;
+        check2 = false;
+        setTimeout(() => {
+            if (footerText.textContent !== "Invalid Command!") return;
+            footerText.innerHTML = defaultFooterText;
+        }, 7500);
+    }
 }
 footerText.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
@@ -155,7 +171,7 @@ footerText.addEventListener("keydown", (e) => {
         if (text == "r" || text == "references") {
             footerText.innerHTML = defaultFooterText;
             playSound(sfx.gameBought);
-            setTimeout(() => {alert("Available references:\n\n1. jojo || jojos\n2. oh my god || omg\n3. start platinum\n4. the world\n5. lero\n6. amani");}, 150);
+            setTimeout(() => {alert("Available references:\n\n1. jojo || jojos\n2. oh my god || omg\n3. start platinum\n4. the world\n5. lero\n6. steel ball run || sbr\n7. amani");}, 150);
             return;
         } else if (text == "jojo" || text == "jojos") {
             playSound(referencesSfx.jojo);
@@ -192,6 +208,13 @@ footerText.addEventListener("keydown", (e) => {
                 if (footerText.textContent !== "Lero Lero Lero!") return;
                 footerText.innerHTML = defaultFooterText;
             }, 7500);
+        } else if (text == "steel ball run" || text == "sbr") {
+            playSound(referencesSfx.steelBallRun);
+            footerText.textContent = "Steel Ball Run!";
+            setTimeout(() => {
+                if (footerText.textContent !== "Steel Ball Run!") return;
+                footerText.innerHTML = defaultFooterText;
+            }, 7500);
         } else if (text == "amani") {
             playSound(referencesSfx.amani);
             footerText.textContent = "I'm sorry, Amani.";
@@ -199,6 +222,9 @@ footerText.addEventListener("keydown", (e) => {
                 if (footerText.textContent !== "I'm sorry, Amani.") return;
                 footerText.innerHTML = defaultFooterText;
             }, 7500);
+        } else {
+            check1 = true;
+            wrongFooterCommand();
         }
     }
 });
