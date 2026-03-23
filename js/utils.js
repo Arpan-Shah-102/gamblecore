@@ -162,4 +162,9 @@ function setSelectedSideAndBet(side, bet) {
 // getMinMaxSideLevel(), getSideCosts()
 // getSelectedSideAndBet(): setSelectedSideAndBet(side, bet)
 
-
+function getBettingBetAmount() {
+    return parseInt(localStorage.getItem("bettingBetAmount")) || 10;
+}
+function setBettingBetAmount(amount) {
+    localStorage.setItem("bettingBetAmount", amount);
+}

@@ -43,6 +43,13 @@ Gamblecore/
 
 ## Update Log
 
+### Update 2.9 - 3/22/2026
+1. Finished basic betting gameplay
+2. Added SBR reference
+3. Added secret footer commands to betting
+4. Fixed footer wrong command not clearing
+5. Bug Fixes
+
 ### Update 2.7 - 3/21/2026
 1. Fixed Scaling Issues
 2. Finished Coinflip Upgrades
