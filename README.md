@@ -43,8 +43,18 @@ Gamblecore/
 
 ## Update Log
 
+### Update 3.0 - 3/23/2026
+1. Fixed UI scaling bugs on games
+2. Added UI scaling to betting
+3. Added shadows to elements without shadows
+4. Added new SFX to betting
+5. Added special-guest all to invite all special guests (also added return varient)
+6. Fixed footer unkown command bug
+7. Fixed sg / lsp bug in footer
+8. Bug Fixes
+
 ### Update 2.9 - 3/22/2026
-1. Finished basic betting gameplay
+1. Finished basic betting gameplay (Still no upgrades or UI scaling support)
 2. Added SBR reference
 3. Added secret footer commands to betting
 4. Fixed footer wrong command not clearing

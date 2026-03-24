@@ -161,7 +161,7 @@ footer {
         width: 30px;
         height: 30px;
         cursor: pointer;
-        filter: invert(20%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+        filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.25)) invert(20%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
         transition: all 0.1s ease-in-out;
         
         &:hover {
@@ -420,7 +420,7 @@ button {
         }
     }
 }
-@media (min-width: 1520px) {
+@media (min-width: 1540px) {
     .game-section {
         height: calc(100vh - 280px);
         transform: scale(1.25);
