@@ -294,6 +294,7 @@ footerText.addEventListener("keydown", (e) => {
         text = footerText.textContent.toLocaleLowerCase().trim().split(/\s+/);
         e.preventDefault();
         footerText.blur();
+        check2 = false;
 
         if (originalText == "h" || originalText == "help") {
             footerText.innerHTML = defaultFooterText;
@@ -301,7 +302,7 @@ footerText.addEventListener("keydown", (e) => {
             setTimeout(() => {alert("Available Commands:\n\n1. load-sound-profile: [a/b/c/d/e] or lsp [a/b/c/d/e]\n\n'a' or no argument: Default SFX Profile\n'b': Puspa SFX Profile\n'c': Adarsha SFX Profile\n'd': Victrin SFX Profile\n'e': Jacob SFX Profile");}, 150);
             return;
         }
-        if (["load-sound-profile:", "lsp"].includes(text[0])) {
+        if (["load-sound-profile", "lsp"].includes(text[0])) {
             if (text[1] == "a" || text[1] == undefined) {
                 loadSfxProfile(deafultSfx);
             } else if (text[1] == "b") {
@@ -312,6 +313,9 @@ footerText.addEventListener("keydown", (e) => {
                 loadSfxProfile(victrinSfx);
             } else if (text[1] == "e") {
                 loadSfxProfile(jacobSfx);
+            } else {
+                wrongFooterCommand();
+                return;
             }
             playSound(slotSfx.win);
             footerText.textContent = "SFX profile changed!";

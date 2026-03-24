@@ -1,5 +1,8 @@
 let gameSfx = {
     ding: new Audio("../assets/sfx/betting/ding.mp3"),
+    go: new Audio("../assets/sfx/betting/go.mp3"),
+    neigh: new Audio("../assets/sfx/betting/horse-neigh.mp3"),
+    clop: new Audio("../assets/sfx/betting/clop.mp3"),
     win: new Audio("../assets/sfx/betting/win.mp3"),
     lose: new Audio("../assets/sfx/betting/lose.mp3"),
 }
@@ -40,6 +43,8 @@ let resetBtn = document.querySelector(".reset");
 addSFX(startBtn); addSFX(pauseBtn); addSFX(resetBtn);
 
 startBtn.addEventListener("click", () => {
+    if (!raceStarted) {playSound(gameSfx.go);}
+    raceStarted = true;
     startGame();
     startBtn.classList.add("disabled");
     pauseBtn.classList.remove("disabled");
@@ -75,6 +80,8 @@ function resetGame() {
     allHorseSpeeds = shuffleInPlace(allHorseSpeeds);
     interval = 75;
     winners = [];
+    raceStarted = false;
+    raceIntervalCount = 0;
 
     startBtn.classList.remove("disabled");
     pauseBtn.classList.add("disabled");
@@ -103,10 +110,16 @@ let finishLineLeft = parseInt(getComputedStyle(raceSection).width) - 225;
 horses.forEach(h => { h.style.left = "0px"; });
 
 let interval = 75;
+let raceStarted = false;
+let raceIntervalCount = 0;
 function startGame() {
     if (raceInterval) return;
 
     raceInterval = setInterval(() => {
+        raceIntervalCount++;
+        if (Math.random() < 0.025) {playSound(gameSfx.neigh);}
+        if (raceIntervalCount % 4 == 0) {playSound(gameSfx.clop);}
+
         horses.forEach((horse, index) => {
             if (winners.includes(index)) return;
             const randomIndex = Math.floor(Math.random() * allHorseSpeeds[index].length);
@@ -124,7 +137,7 @@ function startGame() {
                 if (winners.length == 6) {
                     playSound(winners[0] == horseNum || winners[1] == horseNum ? gameSfx.win : gameSfx.lose);
                     setTimeout(() => {
-                        alert(`Results:\n\n1st: Horse ${winners[0] + 1}\n2nd: Horse ${winners[1] + 1}\n3rd: Horse ${winners[2] + 1}\n4th: Horse ${winners[3] + 1}\n5th: Horse ${winners[4] + 1}\n6th: Horse ${winners[5] + 1}`);
+                        alert(`Results:\n1st: Horse ${winners[0] + 1}\n2nd: Horse ${winners[1] + 1}\n3rd: Horse ${winners[2] + 1}\n4th: Horse ${winners[3] + 1}\n5th: Horse ${winners[4] + 1}\n6th: Horse ${winners[5] + 1}`);
                         if (winners[0] == horseNum) {
                             if (!practiceMode) {
                                 alert(`Congratulations! You won 1st!\nBet Prize: ${moneyFormat(getBettingBetAmount() * 6)}!`);
@@ -168,11 +181,12 @@ footerText.addEventListener("keydown", (e) => {
         text = footerText.textContent.toLocaleLowerCase().trim().split(/\s+/);
         e.preventDefault();
         footerText.blur();
+        check2 = false;
 
         if (originalText == "h" || originalText == "help") {
             footerText.innerHTML = defaultFooterText;
             playSound(sfx.gameBought);
-            setTimeout(() => {alert("Available Commands:\n\n1. special-guest: [1/2/3/4/5/6] or sg [1/2/3/4/5/6]\n2. return-special-guest: [1/2/3/4/5/6] or rsg [1/2/3/4/5/6]");}, 150);
+            setTimeout(() => {alert("Available Commands:\n\n1. special-guest: [1/2/3/4/5/6/a] or sg [1/2/3/4/5/6/a]\n2. return-special-guest: [1/2/3/4/5/6/a] or rsg [1/2/3/4/5/6/a]");}, 150);
             return;
         }
         if (["special-guest", "sg"].includes(text[0])) {
@@ -188,6 +202,13 @@ footerText.addEventListener("keydown", (e) => {
                 specialGuest(4);
             } else if (text[1] == "6") {
                 specialGuest(5);
+            } else if (text[1] == "a" || text[1] == "all") {
+                for (let i = 0; i < 6; i++) {
+                    specialGuest(i);
+                }
+            } else {
+                wrongFooterCommand();
+                return;
             }
             playSound(sfx.cheat);
             footerText.textContent = "Special Guest Invited!";
@@ -208,6 +229,13 @@ footerText.addEventListener("keydown", (e) => {
                 specialGuest(4, true);
             } else if (text[1] == "6") {
                 specialGuest(5, true);
+            } else if (text[1] == "a" || text[1] == "all") {
+                for (let i = 0; i < 6; i++) {
+                    specialGuest(i, true);
+                }
+            } else {
+                wrongFooterCommand();
+                return;
             }
             playSound(sfx.cheat);
             footerText.textContent = "Special Guest Returned!";

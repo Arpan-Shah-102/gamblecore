@@ -167,6 +167,7 @@ footerText.addEventListener("keydown", (e) => {
         text = footerText.textContent.toLocaleLowerCase().trim();
         e.preventDefault();
         footerText.blur();
+        check1 = false;
 
         if (text == "r" || text == "references") {
             footerText.innerHTML = defaultFooterText;

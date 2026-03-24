@@ -264,3 +264,58 @@ body.dark {
         }
     }
 }
+
+footer {
+    position: fixed;
+    /* Only lasts as long as no new elements are added below the game */
+}
+
+@media (max-width: 980px) {
+    .game-section {
+        scale: 0.75;
+    }
+}
+@media (max-width: 760px) {
+    .game-section {
+        scale: 0.6;
+
+        & .controls {
+            margin-top: 10px;
+            scale: 1.25;
+        }
+    }
+}
+@media (max-width: 580px) {
+    .main-game {
+        scale: 0.8;
+
+        & .controls {
+            margin-top: 20px;
+            scale: 1.45;
+        }
+    }
+}
+@media (max-width: 480px) {
+    .main-game {
+        scale: 0.65;
+
+        & .controls {
+            margin-top: 30px;
+            scale: 2.25;
+        }
+    }
+}
+@media (max-width: 390px) {
+    .main-game {
+        scale: 0.5;
+
+        & .controls {
+            margin-top: 45px;
+            scale: 2.5;
+        }
+    }
+    .pre-game .bet-btns {
+        grid-template-columns: repeat(2, minmax(180px, 220px)) !important;
+        scale: 0.9;
+    }
+}
