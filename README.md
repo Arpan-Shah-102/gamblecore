@@ -43,6 +43,12 @@ Gamblecore/
 
 ## Update Log
 
+### Update 3.1 - 3/25/2026
+1. Fixed UI Scaling Bugs
+2. Added Abilities in Betting game
+3. Made abilities free if practice mode enabled
+4. Bug Fixes
+
 ### Update 3.0 - 3/23/2026
 1. Fixed UI scaling bugs on games
 2. Added UI scaling to betting

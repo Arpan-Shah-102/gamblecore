@@ -75,6 +75,18 @@ body.dark {
                 box-shadow: 4px 4px 0px rgba(0, 0, 83, 0.5) inset;
             }
         }
+        &.yellow {
+            color: black;
+            border-color: gold;
+            box-shadow: 4px 4px 0px rgba(255, 255, 0, 0.5);
+
+            &:hover {
+                box-shadow: none;
+            }
+            &:active {
+                box-shadow: 4px 4px 0px rgba(218, 165, 32, 0.5) inset;
+            }
+        }
     }
     
     & .top-label {
@@ -310,6 +322,16 @@ button {
         box-shadow: 4px 4px 0px rgba(0, 0, 83, 0.5) inset;
     }
 }
+.yellow {
+    border-color: gold;
+    box-shadow: 4px 4px 0px rgba(255, 255, 0, 0.5);
+    background-color: rgb(255, 255, 0);
+    color: black;
+    text-shadow: 4px 4px 0px rgba(255, 255, 255, 0.25);
+    &:active {
+        box-shadow: 4px 4px 0px rgba(218, 165, 32, 0.5) inset;
+    }
+}
 
 .game-feature-section {
     width: 100%;
@@ -418,6 +440,10 @@ button {
         & > h2 {
             font-size: 24px;
         }
+    }
+    section {
+        transform: scale(0.75);
+        margin: 20px;
     }
 }
 @media (min-width: 1540px) {
