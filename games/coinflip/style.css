@@ -143,11 +143,3 @@ button.selected {
         font-size: 24px;
     }
 }
-
-@media (max-width: 480px) {
-    section {
-        transform: scale(0.75);
-        margin: 20px;
-    }
-}
-

@@ -220,13 +220,8 @@
 }
 
 @media (max-width: 480px) {
-    section {
-        transform: scale(0.75);
-        margin: 20px;
-
-        &.game-section {
-            overflow: visible;
-        }
+    section.game-section {
+        overflow: visible;
     }
     .spin-lever {
         left: calc(50vw + 85px);
