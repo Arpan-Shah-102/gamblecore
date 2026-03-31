@@ -43,6 +43,11 @@ Gamblecore/
 
 ## Update Log
 
+### Update 3.2 - 3/30/2026
+1. Created Basic UI for scratch cards
+2. UI Updates
+3. Bug Fixes
+
 ### Update 3.1 - 3/25/2026
 1. Fixed UI Scaling Bugs
 2. Added Abilities in Betting game
