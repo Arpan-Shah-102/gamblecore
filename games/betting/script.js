@@ -212,20 +212,27 @@ breakLegAbilityBtn.addEventListener("click", () => {
         allHorseSpeeds[selectedHorse] = allSpeedsInOrder[currentTierIndex - 1];
         goldenCarrotAbilityBtn.classList.remove("disabled");
         playSound(sfx.gameBought);
+        horseLegBroked[selectedHorse] = false;
+        horseCarrotGolden[selectedHorse] = false;
+        setTimeout(() => {alert("Broken horse's leg!")}, 100);
         breakLegAbilityBtn.textContent = "$250.00";
         if (practiceMode) {
             breakLegAbilityBtn.textContent = "Free!";
         }
     } else {
-        calcMoney(250, '+');
+        if (!practiceMode) {
+            calcMoney(250, '+');
+        }
         breakLegAbilityBtn.classList.add("disabled");
         breakLegAbilityBtn.classList.remove("green", "red");
         alert("This horse's leg is already badly broken! You cannot break it further.");
         horseLegBroked[selectedHorse] = true;
+        horseCarrotGolden[selectedHorse] = false;
         breakLegAbilityBtn.textContent = "Max";
     }
     if (currentTierIndex - 1 == 0) {
         horseLegBroked[selectedHorse] = true;
+        horseCarrotGolden[selectedHorse] = false;
         breakLegAbilityBtn.textContent = "Max";
     }
 
@@ -253,6 +260,9 @@ goldenCarrotAbilityBtn.addEventListener("click", () => {
         allHorseSpeeds[selectedHorse] = allSpeedsInOrder[currentTierIndex + 1];
         breakLegAbilityBtn.classList.remove("disabled");
         playSound(sfx.gameBought);
+        horseLegBroked[selectedHorse] = false;
+        horseCarrotGolden[selectedHorse] = false;
+        setTimeout(() => {alert("Fed horse golden carrot!")}, 100);
         goldenCarrotAbilityBtn.textContent = "$500.00";
         if (practiceMode) {
             goldenCarrotAbilityBtn.textContent = "Free!";
@@ -265,10 +275,12 @@ goldenCarrotAbilityBtn.addEventListener("click", () => {
         goldenCarrotAbilityBtn.classList.remove("green", "red");
         alert("This horse already has a golden carrot! You cannot make it faster.");
         horseCarrotGolden[selectedHorse] = true;
+        horseLegBroked[selectedHorse] = false;
         goldenCarrotAbilityBtn.textContent = "Max";
     }
     if (currentTierIndex + 1 == allSpeedsInOrder.length - 1) {
         horseCarrotGolden[selectedHorse] = true;
+        horseLegBroked[selectedHorse] = false;
         goldenCarrotAbilityBtn.textContent = "Max";
     }
 
@@ -290,8 +302,10 @@ function updateAllDisplays() {
     if (horseLegBroked[selectedHorse]) {
         breakLegAbilityBtn.classList.add("disabled");
         breakLegAbilityBtn.classList.remove("green", "red");
+        horseCarrotGolden[selectedHorse] = false;
         breakLegAbilityBtn.textContent = "Max";
     } else if (!horseLegBroked[selectedHorse]) {
+        horseLegBroked[selectedHorse] = false;
         breakLegAbilityBtn.textContent = "$250.00";
         if (practiceMode) {
             breakLegAbilityBtn.textContent = "Free!";
@@ -307,8 +321,10 @@ function updateAllDisplays() {
     if (horseCarrotGolden[selectedHorse]) {
         goldenCarrotAbilityBtn.classList.add("disabled");
         goldenCarrotAbilityBtn.classList.remove("green", "red");
+        horseLegBroked[selectedHorse] = false;
         goldenCarrotAbilityBtn.textContent = "Max";
     } else if (!horseCarrotGolden[selectedHorse]) {
+        horseCarrotGolden[selectedHorse] = false;
         goldenCarrotAbilityBtn.textContent = "$500.00";
         if (practiceMode) {
             goldenCarrotAbilityBtn.textContent = "Free!";

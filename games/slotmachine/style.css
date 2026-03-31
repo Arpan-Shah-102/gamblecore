@@ -1,17 +1,21 @@
 .dark {
+    & .game-section {
+        filter: drop-shadow(4px 4px 0 rgba(255, 255, 255, 0.5));
+    }
     & .slotmachine-body {
         border-color: white;
-        box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.5);
     }
     & .spin-lever {
         border-color: white;
-        box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.5);
 
         & .lever-ball {
             border-color: white;
-            box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.5);
         }
     }
+}
+
+.game-section {
+    filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.5));
 }
 
 .slotmachine-body {
@@ -22,7 +26,6 @@
     border-radius:  8px;
     border-top-left-radius: 150px;
     border-top-right-radius: 150px;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
     z-index: 5;
 
     & .half-circle {
@@ -142,7 +145,6 @@
     height: 150px;
     width: 15px;
     border: 4px solid black;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
     background-color: brown;
     cursor: pointer;
     border-radius: 8px;
@@ -163,7 +165,6 @@
         background-color: red;
         border: 4px solid black;
         border-radius: 50%;
-        box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
         position: relative;
         top: -15px;
         left: -12px;
