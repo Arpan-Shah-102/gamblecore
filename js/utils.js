@@ -168,3 +168,16 @@ function getBettingBetAmount() {
 function setBettingBetAmount(amount) {
     localStorage.setItem("bettingBetAmount", amount);
 }
+
+// getBettingBetAmount(): setBettingBetAmount(amount)
+
+function getPrizesUnlocked() {
+    return JSON.parse(localStorage.getItem("prizesUnlocked")) || [];
+}
+function unlockPrize(prizeID) {
+    let prizes = getPrizesUnlocked();
+    if (!prizes.includes(prizeID)) {
+        prizes.push(prizeID);
+        localStorage.setItem("prizesUnlocked", JSON.stringify(prizes));
+    }
+}

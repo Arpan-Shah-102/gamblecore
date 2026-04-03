@@ -43,6 +43,14 @@ Gamblecore/
 
 ## Update Log
 
+### Update 3.55 - 4/2/2026
+1. Added Basic Functionality to scratch cards
+2. Added Upgrades to scratch cards
+3. Added Functionality to scratch cards
+4. Added Game preview to home
+5. Planned out next update
+6. Bug Fixes
+
 ### Update 3.2 - 3/30/2026
 1. Created Basic UI for scratch cards
 2. UI Updates
