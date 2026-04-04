@@ -29,6 +29,7 @@ body.dark {
     & .terminal {
         font-size: 18px;
         font-weight: bold;
+        text-align: center;
     }
 }
 
@@ -93,6 +94,8 @@ body.dark {
         color: white;
         text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
         -webkit-text-stroke: 2px rgb(255, 0, 0);
+        text-align: center;
+        line-break: normal;
     }
     & > .scratch-card-units {
         display: grid;
@@ -235,6 +238,24 @@ body.dark {
         }
         &.prize-cont {
             width: 325px;
+        }
+    }
+}
+
+@media (max-width: 620px) {
+    section.game-section {
+        scale: 0.9;
+    }
+    section.game-feature-section .basic-row {
+        scale: 0.75;
+    }
+}
+@media (max-width: 480px) {
+    section.game-section {
+        scale: 1.25;
+
+        & .scratch-card-body {
+            scale: 0.8;
         }
     }
 }

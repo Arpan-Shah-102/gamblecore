@@ -1,3 +1,10 @@
+const gameSFX = {
+    scratch: new Audio("../assets/sfx/scratchcards/scratch.mp3"),
+    win: new Audio("../assets/sfx/scratchcards/win.mp3"),
+    lose: new Audio("../assets/sfx/scratchcards/lose.mp3"),
+    upgrade: new Audio("../assets/sfx/scratchcards/upgrade.mp3"),
+}
+
 const symbols = ["💰", "💎", "🍀", "🎉", "7️⃣", "🔥"];
 let betBtns = document.querySelectorAll(".buy-card-btn");
 let scratchCardUnits = document.querySelectorAll(".unit");
@@ -57,7 +64,7 @@ scratchCardUnits.forEach(unit => {
     addSFX(unit);
     unit.addEventListener("click", () => {
         if (unit.classList.contains("scratched")) return;
-        // playSound(sfx.scratch);
+        playSound(gameSFX.scratch);
 
         unit.classList.add("scratched");
         unit.classList.remove("unscratched");
@@ -109,10 +116,10 @@ function allUnitsScratched() {
         resetGame();
     }, 100);
     terminal.textContent = "You lost!";
-    // playSound(sfx.lose);
+    playSound(gameSFX.lose);
 }
 function prizeWon(symbol, multiplier) {
-    // playSound(sfx.win);
+    playSound(gameSFX.win);
     if (!practiceMode) {
         setTimeout(() => {
             alert(`Congratulations! You scratched at least 3 ${symbol}s and won ${multiplier}X (${moneyFormat(currentBet * multiplier)}) your bet!`);
@@ -165,6 +172,7 @@ getUpgradeBtns.forEach(btn => {
         } else {
             alert(`Prize unlocked! ${moneyFormat(getMoney())} remaining.`);
         }
+        playSound(gameSFX.upgrade);
         unlockPrize(btn.dataset.name);
         updateThings();
     });
