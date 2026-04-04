@@ -43,6 +43,11 @@ Gamblecore/
 
 ## Update Log
 
+### Update 3.65 - 4/3/2026
+1. Added SFX to scratch cards
+2. Fixed UI scaling for scratch cards
+3. Bug Fixes
+
 ### Update 3.55 - 4/2/2026
 1. Added Basic Functionality to scratch cards
 2. Added Upgrades to scratch cards

@@ -445,6 +445,9 @@ button {
         transform: scale(0.75);
         margin: 20px;
     }
+    .game-locked {
+        scale: 0.75;
+    }
 }
 @media (min-width: 1540px) {
     .game-section {
