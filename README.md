@@ -48,6 +48,12 @@ Gamblecore/
 
 ## Update Log
 
+### Update 4.0 - 4/5/2026
+1. Added SFX to war
+2. Added war game preview to home screen
+3. Added upgrades to war
+4. Bug fixes
+
 ### Update 3.85 - 4/4/2026
 1. Created new favicons
 2. Created foundations for three new games

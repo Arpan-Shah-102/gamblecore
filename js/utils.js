@@ -190,3 +190,16 @@ function getWarBetAmount() {
 function setWarBetAmount(amount) {
     localStorage.setItem("warBetAmount", amount);
 }
+
+function getWarUpgradeLevels() {
+    return JSON.parse(localStorage.getItem("warUpgradeLevels")) || {player: 0, computer: 0};
+}
+function setWarUpgradeLevel(entity, level) {
+    let levels = getWarUpgradeLevels();
+    levels[entity] = level;
+    localStorage.setItem("warUpgradeLevels", JSON.stringify(levels));
+}
+
+function getWarUpgradePrices() {
+    return [150, 300, 450];
+}

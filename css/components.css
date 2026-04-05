@@ -452,7 +452,7 @@ button {
 }
 @media (min-width: 1540px) {
     .game-section {
-        height: calc(100vh - 280px);
+        min-height: calc(100vh - 280px);
         transform: scale(1.25);
         margin: 0px;
     }
