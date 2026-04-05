@@ -16,6 +16,9 @@ body.dark {
             color: white !important;
         }
     }
+    & .game-feature-section.upgrades .upgrade-option.container {
+        text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.25) !important;
+    }
 }
 
 .game-section {
@@ -57,9 +60,12 @@ body.dark {
             }
         }
     }
-    .draw.disabled {
-        opacity: 0.5;
-        pointer-events: none;
+    .draw {
+        user-select: none;
+        & .disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
     }
     & label {
         font-size: 24px;
@@ -79,6 +85,25 @@ body.dark {
 
             &.opacity-50 {opacity: 0.5;}
         }
+    }
+}
+.game-feature-section.upgrades .upgrade-option.container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+    width: 300px;
+
+    & h3 {
+        font-size: 22px;
+        line-break: normal;
+    }
+    & .level {
+        font-size: 18px;
+    }
+    & .upgrade.disabled {
+        opacity: 0.5;
+        pointer-events: none;
     }
 }
 
