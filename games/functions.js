@@ -58,8 +58,8 @@ let gameLockedOverlay = document.querySelector(".game-locked");
 let closeLockedBtn = document.querySelector(".close-locked-btn");
 let unlockWithLockedBtn = document.querySelector(".unlock-game-with-locked");
 
-let gamePrices = [0, 150, 400, 700, 900, 1500, 2250, 3500, 5000];
-let games = ["slotmachine", "coinflip", "roulette", "blackjack", "poker", "scratchcards", "bingo", "betting", "lottery"];
+let gamePrices = [0, 50, 150, 400, 650, 700, 900, 1200, 1500, 2250, 3500, 5000];
+let games = ["slotmachine", "war", "coinflip", "roulette", "higherorlower", "blackjack", "poker", "diceroll", "scratchcards", "bingo", "betting", "lottery"];
 const currentGamePrice = gamePrices[games.indexOf(gameLockedOverlay.classList[1])];
 
 if (!gameOwned(gameLockedOverlay.classList[1])) {
