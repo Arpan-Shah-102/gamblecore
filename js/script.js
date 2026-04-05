@@ -68,7 +68,7 @@ function playSound(sound, muteOveride = false) {
 }
 
 let gameBtns = document.querySelectorAll(".game");
-let gamePrices = [0, 150, 400, 700, 900, 1500, 2250, 3500, 5000];
+let gamePrices = [0, 50, 150, 400, 650, 700, 900, 1200, 1500, 2250, 3500, 5000];
 
 gameBtns.forEach((gameDiv, index) => {
     addSFX(gameDiv);

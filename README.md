@@ -1,15 +1,17 @@
 # Gamblecore
 
-**Gamblecore** is a browser-based gambling game platform featuring multiple mini-games with a central hub. Players start with $1,000 and can unlock new games by earning money through gameplay.
+**Gamblecore** is a browser-based gambling game platform with a central game hub and shared progression.
+Players start with $1,000 and unlock games by earning money through gameplay.
 
 ## Features
 
-- **9 Mini-Games**: Slot Machine, Coin Flip, Roulette, Blackjack, Poker, Scratch Cards, Bingo, Betting, and Lottery
+- **12 Game Modules**: Slot Machine, Coin Flip, Roulette, Blackjack, Poker, Scratch Cards, Bingo, Betting, Lottery, Dice Roll, Higher or Lower, and War
 - **Progressive Unlock System**: Locked games unlock as you earn more money
 - **Sound Effects**: Hover and click audio feedback with mute toggle
 - **Dark/Light Theme**: Switch between themes with persistent storage
 - **Save/Load System**: Export and import game progress as JSON or TXT files
-- **Responsive Design**: Grid-based layout (1-3 columns)
+- **Practice Mode Support**: Available in supported games without spending money
+- **Responsive Design**: Grid and game layouts adapt across screen sizes
 - **LocalStorage Persistence**: Money, owned games, theme, and mute settings are saved
 
 ## Project Structure
@@ -17,9 +19,9 @@
 ```
 Gamblecore/
 ├── index.html
-├── js/              # script.js, utils.js
-├── css/             # components.css, style.css
-├── assets/          # Icons (light/dark theme variants)
+├── js/                  # script.js, utils.js
+├── css/                 # components.css, style.css
+├── assets/              # Icons (light/dark theme variants)
 └── games/               # Individual game folders
     ├── slotmachine/
     ├── coinflip/
@@ -30,18 +32,28 @@ Gamblecore/
     ├── bingo/
     ├── betting/
     ├── lottery/
+    ├── diceroll/
+    ├── higherorlower/
+    ├── war/
     ├── functions.js     # Shared game logic
     └── assets/          # Game images/icons
 ```
 
 ## How to Play
 
-1. Open `https://arpan-shah-102.github.io/gamblecore/` in your browser
+1. Open https://arpan-shah-102.github.io/gamblecore/ in your browser
 2. Click on unlocked games to play
 3. Earn money to unlock locked games
 4. Use settings to save progress, change theme, or mute audio
 
 ## Update Log
+
+### Update 3.85 - 4/4/2026
+1. Created new favicons
+2. Created foundations for three new games
+3. Worked on War game
+4. Planned out next Update
+5. Bug Fixes
 
 ### Update 3.65 - 4/3/2026
 1. Added SFX to scratch cards

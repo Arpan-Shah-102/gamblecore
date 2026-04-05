@@ -127,7 +127,7 @@ body.dark {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 220px);
+    min-height: calc(100vh - 220px);
 }
 footer, header {
     text-align: center;
@@ -135,6 +135,7 @@ footer, header {
     width: 100%;
     height: 100px;
     z-index: 99;
+    line-break: normal;
 
     &>h1 {
         top: 10px;

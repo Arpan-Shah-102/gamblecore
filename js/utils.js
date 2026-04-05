@@ -181,3 +181,12 @@ function unlockPrize(prizeID) {
         localStorage.setItem("prizesUnlocked", JSON.stringify(prizes));
     }
 }
+
+// getPrizesUnlocked(): unlockPrize(prizeID)
+
+function getWarBetAmount() {
+    return parseInt(localStorage.getItem("warBetAmount")) || 10;
+}
+function setWarBetAmount(amount) {
+    localStorage.setItem("warBetAmount", amount);
+}
