@@ -48,6 +48,14 @@ Gamblecore/
 
 ## Update Log
 
+### Update 4.3 - 4/5/2026
+1. Created basic UI for higher or lower
+2. Added UI scaling to higher or lower
+3. Created functionality for higher or lower
+4. Planned out next update
+5. Fixed draw card and bet amount bug in war
+6. Bug fixes
+
 ### Update 4.0 - 4/5/2026
 1. Added SFX to war
 2. Added war game preview to home screen

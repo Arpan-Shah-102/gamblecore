@@ -203,3 +203,14 @@ function setWarUpgradeLevel(entity, level) {
 function getWarUpgradePrices() {
     return [150, 300, 450];
 }
+
+// getWarBetAmount(): setWarBetAmount(amount)
+// getWarUpgradeLevels(): setWarUpgradeLevel(entity, level)
+// getWarUpgradePrices()
+
+function getHigherLowerBetAmount() {
+    return parseInt(localStorage.getItem("higherLowerBetAmount")) || 10;
+}
+function setHigherLowerBetAmount(amount) {
+    localStorage.setItem("higherLowerBetAmount", amount);
+}
