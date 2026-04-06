@@ -49,6 +49,15 @@ betInput.addEventListener("blur", () => {
     }
     setWarBetAmount(betInput.value);
 });
+practiceModeToggle.addEventListener("click", () => {
+    if (!practiceMode) {
+        betInput.value = getWarBetAmount();
+        betInput.disabled = false;
+    } else {
+        betInput.value = "0";
+        betInput.disabled = true;
+    }
+});
 
 drawCardBtn.addEventListener("click", () => {
     let betAmount = getWarBetAmount();
@@ -64,7 +73,8 @@ drawCardBtn.addEventListener("click", () => {
     playSound(gameSfx.flipCard);
 
     drawCardBtn.classList.add("disabled");
-    playerCard.classList.add("draw");
+    betInput.disabled = true;
+    playerCard.classList.add("drawing");
 
     let playerCardIdx = Math.floor(Math.random() * cards.length);
     if (getWarUpgradeLevels().player > 0) {
@@ -103,11 +113,11 @@ drawCardBtn.addEventListener("click", () => {
         }
     }, 500);
     setTimeout(() => {
-        playerCard.classList.remove("draw");
+        playerCard.classList.remove("drawing");
     }, 1050);
 
     setTimeout(() => {
-        computerCard.classList.add("draw");
+        computerCard.classList.add("drawing");
         playSound(gameSfx.flipCard);
     }, 1500);
     setTimeout(() => {
@@ -117,7 +127,7 @@ drawCardBtn.addEventListener("click", () => {
         }
     }, 2000);
     setTimeout(() => {
-        computerCard.classList.remove("draw");
+        computerCard.classList.remove("drawing");
     }, 2550);
 
     setTimeout(() => {
@@ -151,6 +161,7 @@ drawCardBtn.addEventListener("click", () => {
 
         updateUpgradeDisplays();
         drawCardBtn.classList.remove("disabled");
+        betInput.disabled = !practiceMode ? false : true;
         playerCard.textContent = "🂠";
         computerCard.textContent = "🂠";
         playerCard.classList.remove("r");

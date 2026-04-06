@@ -54,7 +54,7 @@ body.dark {
                 &.r {
                     color: red;
                 }
-                &.draw {
+                &.drawing {
                     animation: draw 1s ease-in-out;
                 }
             }
@@ -62,7 +62,7 @@ body.dark {
     }
     .draw {
         user-select: none;
-        & .disabled {
+        &.disabled {
             opacity: 0.5;
             pointer-events: none;
         }
@@ -83,7 +83,10 @@ body.dark {
             font-weight: bold;
             font-size: 24px;
 
-            &.opacity-50 {opacity: 0.5;}
+            &:disabled {
+                opacity: 0.5;
+                pointer-events: none;
+            }
         }
     }
 }
