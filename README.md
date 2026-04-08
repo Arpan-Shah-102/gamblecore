@@ -48,6 +48,14 @@ Gamblecore/
 
 ## Update Log
 
+### Update 4.55 - 4/6/2026
+1. Added SFX to higher or lower
+2. Added higher lower game preview to menu
+3. Added Upgrades to higher or lower
+4. Added Dark Mode compatibility to higher or lower
+5. Fixed all bet Inputs for games
+6. Bug Fixes
+
 ### Update 4.3 - 4/5/2026
 1. Created basic UI for higher or lower
 2. Added UI scaling to higher or lower

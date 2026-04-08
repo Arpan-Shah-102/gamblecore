@@ -214,3 +214,15 @@ function getHigherLowerBetAmount() {
 function setHigherLowerBetAmount(amount) {
     localStorage.setItem("higherLowerBetAmount", amount);
 }
+
+function getHigherLowerUpgradeLevel() {
+    return parseInt(localStorage.getItem("higherLowerUpgradeLevel")) || 0;
+}
+function addHigherLowerUpgradeLevel() {
+    let level = getHigherLowerUpgradeLevel();
+    level++;
+    localStorage.setItem("higherLowerUpgradeLevel", level);
+}
+function getHigherLowerUpgradePrices() {
+    return [75, 150, 225];
+}
