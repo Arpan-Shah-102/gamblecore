@@ -69,16 +69,17 @@ practiceModeToggle.addEventListener("click", () => {
     betAmountInput.attributes["readonly"] ? betAmountInput.removeAttribute("readonly") : betAmountInput.setAttribute("readonly", true);
 });
 
-betAmountInput.addEventListener("input", () => {
-    setTimeout(() => {
-        let newBet = parseInt(betAmountInput.value);
-        if (newBet < 1 || newBet > 1000 || isNaN(newBet)) {
-            betAmountInput.value = selectedSideAndBet.bet;
-            return;
-        }
-        setSelectedSideAndBet(selectedSideAndBet.side, newBet);
-        selectedSideAndBet = getSelectedSideAndBet();
-    }, 1500);
+betAmountInput.addEventListener("blur", () => {
+    let betAmount = parseInt(betAmountInput.value);
+    if (isNaN(betAmount) || betAmount < 1) {
+        betAmountInput.value = getHigherLowerBetAmount();
+    } else if (betAmount > 1000) {
+        betAmountInput.value = 1000;
+    }
+    if (betAmount > getMoney()) {
+        betAmountInput.value = getMoney();
+    }
+    setHigherLowerBetAmount(betAmountInput.value);
 });
 
 selectSideBtns.forEach(element => {

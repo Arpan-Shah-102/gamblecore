@@ -43,11 +43,14 @@ betInput.value = getWarBetAmount();
 betInput.addEventListener("blur", () => {
     let betAmount = parseInt(betInput.value);
     if (isNaN(betAmount) || betAmount < 1) {
-        betInput.value = getWarBetAmount();
+        betInput.value = getHigherLowerBetAmount();
     } else if (betAmount > 1000) {
         betInput.value = 1000;
     }
-    setWarBetAmount(betInput.value);
+    if (betAmount > getMoney()) {
+        betInput.value = getMoney();
+    }
+    setHigherLowerBetAmount(betInput.value);
 });
 practiceModeToggle.addEventListener("click", () => {
     if (!practiceMode) {

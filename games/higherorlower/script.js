@@ -1,9 +1,19 @@
+const gameSfx = {
+    flipNumber: new Audio("../assets/sfx/higherorlower/reveal-number.mp3"),
+    win: new Audio("../assets/sfx/higherorlower/win.mp3"),
+    lose: new Audio("../assets/sfx/higherorlower/lose.mp3"),
+    upgrade: new Audio("../assets/sfx/higherorlower/upgrade.mp3"),
+}
+
 let number1 = document.querySelector(".n1");
 let number2 = document.querySelector(".n2");
 const numberCards = [number1, number2];
 
 let n1;
 let n2;
+let upgradeBtn = document.querySelector(".upgrade-btn");
+addSFX(upgradeBtn);
+let levelLabel = document.querySelector(".level");
 
 let betAmountInput = document.querySelector(".bet-amount");
 let halfBetBtn = document.querySelector(".bet-half");
@@ -28,6 +38,9 @@ betAmountInput.addEventListener("blur", () => {
         betAmountInput.value = getHigherLowerBetAmount();
     } else if (betAmount > 1000) {
         betAmountInput.value = 1000;
+    }
+    if (betAmount > getMoney()) {
+        betAmountInput.value = getMoney();
     }
     setHigherLowerBetAmount(betAmountInput.value);
 });
@@ -55,6 +68,7 @@ betBtns.forEach(btn => {
         }
         betType = btn.classList.contains("higher-btn") ? "higher" : "lower";
         setTimeout(() => {
+            playSound(gameSfx.flipNumber);
             number2.classList.add("flipping");
         }, 150);
         setTimeout(() => {
@@ -65,8 +79,23 @@ betBtns.forEach(btn => {
             number2.classList.remove("flipping");
         }, 1200);
         setTimeout(() => {
+            if (getHigherLowerUpgradeLevel() > 0) {
+                if (betType == "higher") {
+                    n2 += getHigherLowerUpgradeLevel();
+                    if (n2 > 100) {n2 = 100;}
+                    n1 -= getHigherLowerUpgradeLevel();
+                    if (n1 < 1) {n1 = 1;}
+                } else if (betType == "lower") {
+                    n2 -= getHigherLowerUpgradeLevel();
+                    if (n2 < 1) {n2 = 1;}
+                    n1 += getHigherLowerUpgradeLevel();
+                    if (n1 > 100) {n1 = 100;}
+                }
+            }
+
             let alertMessage;
             if (betType == "higher" && n2 > n1) {
+                playSound(gameSfx.win);
                 if (!practiceMode) {
                     alertMessage = `You win! ${n2} is higher than ${n1}. You won ${moneyFormat(Math.round(getHigherLowerBetAmount() * 1.5))}.`;
                     calcMoney(Math.round(betAmount * 1.5), "+");
@@ -75,6 +104,7 @@ betBtns.forEach(btn => {
                     alertMessage = `You guessed correctly! ${n2} is higher than ${n1}.`;
                 }
             } else if (betType == "lower" && n2 < n1) {
+                playSound(gameSfx.win);
                 if (!practiceMode) {
                     alertMessage = `You win! ${n2} is lower than ${n1}. You won ${moneyFormat(Math.round(getHigherLowerBetAmount() * 1.5))}.`;
                     calcMoney(Math.round(betAmount * 1.5), "+");
@@ -83,14 +113,48 @@ betBtns.forEach(btn => {
                     alertMessage = `You guessed correctly! ${n2} is lower than ${n1}.`;
                 }
             } else {
+                playSound(gameSfx.lose);
                 alertMessage = `You lose! ${n2} is not ${betType} than ${n1}.`;
             }
-            alert(alertMessage);
+            setTimeout(() => {
+                alert(alertMessage);
+            }, 150);
             number2.classList.add("unknown");
             generateRandomNumbers();
         }, 1500);
     });
 });
+
+upgradeBtn.addEventListener("click", () => {
+    setTimeout(() => {
+        if (practiceMode) {
+            if (!confirm(`Are you sure you want to upgrade? Upgrading in practice mode still uses money. Remaining funds: ${moneyFormat(getMoney())}`)) return;
+        }
+        if (!enoughMoney(getHigherLowerUpgradePrices()[getHigherLowerUpgradeLevel()])) {
+            alert("You do not have enough money to upgrade.");
+            return;
+        }
+        calcMoney(getHigherLowerUpgradePrices()[getHigherLowerUpgradeLevel()], "-");
+        addHigherLowerUpgradeLevel();
+        levelLabel.textContent = `Lvl ${getHigherLowerUpgradeLevel()}`;
+        playSound(gameSfx.upgrade);
+        updateUpgradeLabel();
+    }, 50);
+});
+
+function updateUpgradeLabel() {
+    if (getMoney() >= getHigherLowerUpgradePrices()[getHigherLowerUpgradeLevel()]) {
+        upgradeBtn.classList.remove("red");
+        upgradeBtn.classList.add("green");
+    } else if (getMoney() < getHigherLowerUpgradePrices()[getHigherLowerUpgradeLevel()]) {
+        upgradeBtn.classList.remove("green");
+        upgradeBtn.classList.add("red");
+    }
+    upgradeBtn.textContent = moneyFormat(getHigherLowerUpgradePrices()[getHigherLowerUpgradeLevel()]);
+    levelLabel.textContent = `Lvl ${getHigherLowerUpgradeLevel()}`;
+    if (!practiceMode) {updateMoneyLabel();}
+}
+updateUpgradeLabel();
 
 function generateRandomNumbers() {
     n1 = Math.floor(Math.random() * 100) + 1;

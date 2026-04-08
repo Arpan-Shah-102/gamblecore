@@ -1,4 +1,8 @@
 body.dark {
+    & .number {
+        border: 4px solid white !important;
+        box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.5) !important;
+    }
     & label {
         text-shadow: 3px 3px 0px rgba(255, 255, 255, 0.25) !important;
 
@@ -7,6 +11,9 @@ body.dark {
             border-bottom: 4px solid white !important;
             color: white !important;
         }
+    }
+    & .upgrade.container {
+        text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.25) !important;
     }
 }
 
@@ -68,6 +75,12 @@ body.dark {
             pointer-events: none;
         }
     }
+}
+.upgrade.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
 }
 
 @keyframes flip {
