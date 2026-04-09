@@ -96,9 +96,11 @@ function spin() {
                 calcMoney(reward, "+");
                 updateMoneyLabel();
                 resultMessage.textContent = `CONGRATULATIONS! You won $${reward}!`;
+                updateFooterDelay(`JACKPOT! You won ${moneyFormat(reward)}!`);
                 updateShopAndStats();
             } else if (practiceMode) {
                 resultMessage.textContent = `JACKPOT!`;
+                updateFooterDelay(`JACKPOT!`, 3000);
             }
             playSound(slotSfx.win);
         } else {

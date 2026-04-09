@@ -43,14 +43,14 @@ betInput.value = getWarBetAmount();
 betInput.addEventListener("blur", () => {
     let betAmount = parseInt(betInput.value);
     if (isNaN(betAmount) || betAmount < 1) {
-        betInput.value = getHigherLowerBetAmount();
+        betInput.value = getWarBetAmount();
     } else if (betAmount > 1000) {
         betInput.value = 1000;
     }
     if (betAmount > getMoney()) {
         betInput.value = getMoney();
     }
-    setHigherLowerBetAmount(betInput.value);
+    setWarBetAmount(betInput.value);
 });
 practiceModeToggle.addEventListener("click", () => {
     if (!practiceMode) {
@@ -158,9 +158,12 @@ drawCardBtn.addEventListener("click", () => {
             }
             playSound(gameSfx.tie);
         }
-        setTimeout(() => {
-            alert(alertText);
-        }, 150);
+        updateFooterDelay(alertText);
+        if (!getAlertsDisabled()) {
+            setTimeout(() => {
+                alert(alertText);
+            }, 150);
+        }
 
         updateUpgradeDisplays();
         drawCardBtn.classList.remove("disabled");
@@ -196,13 +199,14 @@ upgradeBtns.forEach((btn, index) => {
             return;
         }
         if (practiceMode) {
-            if (!confirm("Buying upgrades in practice mode still takes your money. Are you sure you want to purchase this upgrade?")) {
+            if (!confirm("Buying upgrades in practice mode still takes your money. Are you sure you want to purchase this upgrade? Current Blance: " + moneyFormat(getMoney()))) {
                 return;
             }
         }
         calcMoney(upgradeCost, "-");
         playSound(gameSfx.upgrade);
         setWarUpgradeLevel(index == 0 ? "player" : "computer", level + 1);
+        updateUpgradeDisplays("Upgrade purchased!");
         if (!practiceMode) {
             updateMoneyLabel();
         } else {

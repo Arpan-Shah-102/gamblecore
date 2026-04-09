@@ -150,6 +150,13 @@ const referencesSfx = {
 let check1 = false;
 let check2 = false;
 
+function updateFooterDelay(newText, duration = 5000) {
+    footerText.textContent = newText;
+    setTimeout(() => {
+        footerText.innerHTML = defaultFooterText;
+    }, duration);
+}
+
 function wrongFooterCommand() {
     if (check1 && check2) {
         playSound(sfx.cheat);

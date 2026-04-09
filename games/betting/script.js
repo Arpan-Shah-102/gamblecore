@@ -23,14 +23,14 @@ let betAmountInput = document.querySelector("input.bet-amount");
 betAmountInput.addEventListener("blur", () => {
     let betAmount = parseInt(betAmountInput.value);
     if (isNaN(betAmount) || betAmount < 1) {
-        betAmountInput.value = getHigherLowerBetAmount();
+        betAmountInput.value = getBettingBetAmount();
     } else if (betAmount > 1000) {
         betAmountInput.value = 1000;
     }
     if (betAmount > getMoney()) {
         betAmountInput.value = getMoney();
     }
-    setHigherLowerBetAmount(betAmountInput.value);
+    setBettingBetAmount(betAmountInput.value);
 });
 practiceModeToggle.addEventListener("click", () => {
     updateAllDisplays();
@@ -154,27 +154,32 @@ function startGame() {
                 if (winners.length == 6) {
                     playSound(winners[0] == horseNum || winners[1] == horseNum ? gameSfx.win : gameSfx.lose);
                     setTimeout(() => {
+                        let alertMsg;
                         alert(`Results:\n1st: Horse ${winners[0] + 1}\n2nd: Horse ${winners[1] + 1}\n3rd: Horse ${winners[2] + 1}\n4th: Horse ${winners[3] + 1}\n5th: Horse ${winners[4] + 1}\n6th: Horse ${winners[5] + 1}`);
                         if (winners[0] == horseNum) {
                             if (!practiceMode) {
-                                alert(`Congratulations! You won 1st!\nBet Prize: ${moneyFormat(getBettingBetAmount() * 6)}!`);
+                                alertMsg = `Congratulations! You won 1st!\nBet Prize: ${moneyFormat(getBettingBetAmount() * 6)}!`;
                                 calcMoney(getBettingBetAmount() * 6, "+");
                                 updateMoneyLabel();
                             } else {
-                                alert("Congratulations! You won 1st!");
+                                alertMsg = "Congratulations! You won 1st!";
                             }
                         } else if (winners[1] == horseNum) {
                             if (!practiceMode) {
-                                alert(`Congratulations! You won 2nd!\nBet Prize: ${moneyFormat(getBettingBetAmount() * 2)}!`);
+                                alertMsg = `Congratulations! You won 2nd!\nBet Prize: ${moneyFormat(getBettingBetAmount() * 2)}!`;
                                 calcMoney(getBettingBetAmount() * 2, "+");
                                 updateMoneyLabel();
                             } else {
-                                alert("Congratulations! You won 2nd!");
+                                alertMsg = "Congratulations! You won 2nd!";
                             }
                         } else {
                             const winnerNum = winners.indexOf(horseNum) + 1;
-                            alert(`You came in ${winnerNum}${winnerNum == 3 ? 'rd' : 'th'} place.\nBetter luck next time!`);
+                            alertMsg = `You came in ${winnerNum}${winnerNum == 3 ? 'rd' : 'th'} place.\nBetter luck next time!`;
                         }
+                        if (!getAlertsDisabled()) {
+                            alert(alertMsg);
+                        }
+                        updateFooterDelay(alertMsg);
                         resetGame();
                     }, 250);
                 }

@@ -116,9 +116,12 @@ betBtns.forEach(btn => {
                 playSound(gameSfx.lose);
                 alertMessage = `You lose! ${n2} is not ${betType} than ${n1}.`;
             }
-            setTimeout(() => {
-                alert(alertMessage);
-            }, 150);
+            if (!getAlertsDisabled()) {
+                setTimeout(() => {
+                    alert(alertMessage);
+                }, 150);
+            }
+            updateFooterDelay(alertMessage);
             number2.classList.add("unknown");
             generateRandomNumbers();
         }, 1500);
@@ -137,6 +140,7 @@ upgradeBtn.addEventListener("click", () => {
         calcMoney(getHigherLowerUpgradePrices()[getHigherLowerUpgradeLevel()], "-");
         addHigherLowerUpgradeLevel();
         levelLabel.textContent = `Lvl ${getHigherLowerUpgradeLevel()}`;
+        updateFooterDelay(`Upgraded to level ${getHigherLowerUpgradeLevel()}!`);
         playSound(gameSfx.upgrade);
         updateUpgradeLabel();
     }, 50);

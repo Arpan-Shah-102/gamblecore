@@ -49,6 +49,7 @@ function flipCoin() {
 
             if (flipResult === selectedSideAndBet.side) {
                 coinResult.textContent = `You won${practiceMode ? "!" : ` ${moneyFormat(selectedSideAndBet.bet * 2)}`}`;
+                updateFooterDelay("You won!");
                 playSound(coinSfx.win);
                 if (!practiceMode) {
                     calcMoney(selectedSideAndBet.bet * 2, "+");
@@ -56,6 +57,7 @@ function flipCoin() {
             } else if (flipResult !== selectedSideAndBet.side) {
                 coinResult.textContent = `You lost${practiceMode ? "!" : ` ${moneyFormat(selectedSideAndBet.bet)}`}`;
                 playSound(coinSfx.lose);
+                updateFooterDelay("You lost!");
             }
             if (!practiceMode) {updateThings();}
             coin.addEventListener("click", flipCoin);
@@ -72,14 +74,14 @@ practiceModeToggle.addEventListener("click", () => {
 betAmountInput.addEventListener("blur", () => {
     let betAmount = parseInt(betAmountInput.value);
     if (isNaN(betAmount) || betAmount < 1) {
-        betAmountInput.value = getHigherLowerBetAmount();
+        betAmountInput.value = selectedSideAndBet.bet;
     } else if (betAmount > 1000) {
         betAmountInput.value = 1000;
     }
     if (betAmount > getMoney()) {
         betAmountInput.value = getMoney();
     }
-    setHigherLowerBetAmount(betAmountInput.value);
+    setSelectedSideAndBet(selectedSideAndBet.side, betAmountInput.value);
 });
 
 selectSideBtns.forEach(element => {
@@ -132,7 +134,11 @@ upgradeButtons.forEach((btn, index) => {
                 setSideLevel(side, currentLevel + 1);
                 setSideLevel(index == 0 ? "tails" : "heads", getSideLevels()[index == 0 ? "tails" : "heads"] - 1);
             }
+            updateFooterDelay("Upgrade successful!");
             updateUpgradeContainers();
+        } else {
+            alert("You do not have enough money to upgrade this."); 
+            updateFooterDelay("Not enough money.");
         }
     });
 });

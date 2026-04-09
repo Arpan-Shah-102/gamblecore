@@ -112,17 +112,22 @@ function allUnitsScratched() {
         return;
     }
     setTimeout(() => {
-        alert("Better luck next time!");
+        if (!getAlertsDisabled()) {
+            alert("Better luck next time!");
+        }
         resetGame();
     }, 100);
     terminal.textContent = "You lost!";
+    updateFooterDelay("You lost!");
     playSound(gameSFX.lose);
 }
 function prizeWon(symbol, multiplier) {
     playSound(gameSFX.win);
     if (!practiceMode) {
         setTimeout(() => {
-            alert(`Congratulations! You scratched at least 3 ${symbol}s and won ${multiplier}X (${moneyFormat(currentBet * multiplier)}) your bet!`);
+            if (!getAlertsDisabled()) {
+                alert(`Congratulations! You scratched at least 3 ${symbol}s and won ${multiplier}X (${moneyFormat(currentBet * multiplier)}) your bet!`);
+            }
             resetGame();
         }, 100);
         terminal.textContent = `You won ${moneyFormat(currentBet * multiplier)}!`;
@@ -134,6 +139,7 @@ function prizeWon(symbol, multiplier) {
         }, 100);
         terminal.textContent = `You won!`;
     }
+    updateFooterDelay("You won a prize!");
 }
 
 function resetGame() {
@@ -172,6 +178,7 @@ getUpgradeBtns.forEach(btn => {
         } else {
             alert(`Prize unlocked! ${moneyFormat(getMoney())} remaining.`);
         }
+        updateFooterDelay("Prize unlocked!");
         playSound(gameSFX.upgrade);
         unlockPrize(btn.dataset.name);
         updateThings();
