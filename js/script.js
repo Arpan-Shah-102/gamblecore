@@ -172,13 +172,31 @@ function moneySecret() {
     }, 5000);
 }
 
-if (document.body.classList.contains("dark")) {
-    gameBtns.forEach(gameDiv => {
-        gameDiv.style.backgroundImage = `url("./assets/${getCurrentTheme()}/${gameDiv.classList[1]}.png")`;
-    });
+function updateAlertsDisabled() {
+    if (getAlertsDisabled()) {
+        settingButtons[0].textContent = "Enable Unnecessary Alerts";
+        settingButtons[0].classList.remove("yellow");
+        settingButtons[0].classList.add("blue");
+    } else if (!getAlertsDisabled()) {
+        settingButtons[0].textContent = "Disable Unnecessary Alerts";
+        settingButtons[0].classList.remove("blue");
+        settingButtons[0].classList.add("yellow");
+    }
 }
+updateAlertsDisabled();
 
 settingButtons[0].addEventListener("click", () => {
+    toggleAlertsDisabled();
+    updateAlertsDisabled();
+    setTimeout(() => {
+        if (getAlertsDisabled()) {
+            alert("Unnecessary alerts in games have been disabled.");
+        } else if (!getAlertsDisabled()) {
+            alert("Unnecessary alerts in games have been re-enabled.");
+        }
+    }, 100);
+});
+settingButtons[1].addEventListener("click", () => {
     setTimeout(() => {
         let choice = confirm("Are you sure you want to reset your game?");
         if (!choice) return;

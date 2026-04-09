@@ -21,6 +21,19 @@ body.dark {
         box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.5);
         color: white;
     }
+    
+    & .game.slotmachine {background-image: url("../assets/dark/slotmachine.png");}
+    & .game.war {background-image: url("../assets/dark/war.png");}
+    & .game.coinflip {background-image: url("../assets/dark/coinflip.png");}
+    & .game.roulette {background-image: url("../assets/dark/roulette.png");}
+    & .game.higherorlower {background-image: url("../assets/dark/higherorlower.png");}
+    & .game.blackjack {background-image: url("../assets/dark/blackjack.png");}
+    & .game.poker {background-image: url("../assets/dark/poker.png");}
+    & .game.diceroll {background-image: url("../assets/dark/diceroll.png");}
+    & .game.scratchcards {background-image: url("../assets/dark/scratchcards.png");}
+    & .game.bingo {background-image: url("../assets/dark/bingo.png");}
+    & .game.betting {background-image: url("../assets/dark/betting.png");}
+    & .game.lottery {background-image: url("../assets/dark/lottery.png");}
 }
 
 main {
@@ -41,7 +54,7 @@ main {
     box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
     cursor: pointer;
     text-align: center;
-    transition: all 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
     background: no-repeat center / cover;
 
     &:hover {
@@ -123,12 +136,15 @@ main {
     & > .setting-option {
         display: flex;
         flex-direction: column;
-        margin: 20px 0px;
+        margin: 20px 0 10px 0;
         justify-content: space-between;
         height: 300px;
     }
     & button {
         display: block;
+        &.disable-alerts {
+            font-size: 14px;
+        }
     }
     & .close-settings {
         display: inline-block;
@@ -175,6 +191,9 @@ main {
         }
         & button {
             font-size: 14px;
+            &.disable-alerts {
+                font-size: 10px;
+            }
         }
     }
 }
@@ -182,7 +201,7 @@ main {
     main {
         grid-template-columns: repeat(auto-fit, 400px);
         grid-template-rows: repeat(auto-fit, 220px);
-        gap: 150px;
+        gap: 120px;
     }
     .game {
         height: 220px;
@@ -198,6 +217,9 @@ main {
         }
         & button {
             font-size: 18px;
+            &.disable-alerts {
+                font-size: 18px;
+            }
         }
     }
 }

@@ -57,6 +57,14 @@ function setCurrentTheme(theme) {
     localStorage.setItem("theme", theme);
 }
 
+function getAlertsDisabled() {
+    return localStorage.getItem("alertsDisabled") === "true";
+}
+function toggleAlertsDisabled() {
+    const disabled = getAlertsDisabled();
+    localStorage.setItem("alertsDisabled", !disabled);
+}
+
 // getMoney(): moneyFormat(amount), calcMoney(amount, operation), setMoney(amount), enoughMoney(amount), updateMoneyLabel()
 // getOwnedGames(): addGame(gameID), gameOwned(gameID)
 // isMuted(): toggleMute()

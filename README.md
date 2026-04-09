@@ -48,7 +48,12 @@ Gamblecore/
 
 ## Update Log
 
-### Update 4.55 - 4/6/2026
+### Update 4.6 - 4/8/2026
+1. Added turn off unnessicary alerts feature in settings
+2. Added more game message features to the footer
+3. Bug fixes
+
+### Update 4.55 - 4/7/2026
 1. Added SFX to higher or lower
 2. Added higher lower game preview to menu
 3. Added Upgrades to higher or lower
@@ -56,7 +61,7 @@ Gamblecore/
 5. Fixed all bet Inputs for games
 6. Bug Fixes
 
-### Update 4.3 - 4/5/2026
+### Update 4.3 - 4/6/2026
 1. Created basic UI for higher or lower
 2. Added UI scaling to higher or lower
 3. Created functionality for higher or lower
