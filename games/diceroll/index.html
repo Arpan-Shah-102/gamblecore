@@ -11,7 +11,7 @@
 
     <body>
         <header>
-            <h1>Dice Roll</h1>
+            <h1>Dice Duel</h1>
         </header>
         <div class="money-label top-label">
             <p>$1,000.00</p>
@@ -22,7 +22,20 @@
 
         <main>
             <section class="game-section">
-                <h2>Work in Progress.</h2>
+                <div class="dices">
+                    <div class="section player">
+                        <h3>Your<br>Role</h3>
+                        <h2 class="die"><span class="dice-1 player-die">⚅</span><span class="dice-2 player-die">⚅</span></h2>
+                        <p class="result player-score">00</p>
+                    </div>
+                    <div class="section computer">
+                        <h3>Computer's<br>Role</h3>
+                        <h2 class="die"><span class="dice-1 computer-die">⚅</span><span class="dice-2 computer-die">⚅</span></h2>
+                        <p class="result computer-score">00</p>
+                    </div>
+                </div>
+                <label>Bet Amount: <input class="bet-amount" type="number" max="1000" min="1" value="10"></label>
+                <button class="roll-btn blue">Roll</button>
             </section>
         </main>
 

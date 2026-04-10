@@ -185,7 +185,9 @@ function updateThings() {
 }
 updateThings();
 
-footerText.addEventListener("click", () => {
-    check2 = true;
-    wrongFooterCommand();
+footerText.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        check2 = true;
+        wrongFooterCommand();
+    }
 });
