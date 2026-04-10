@@ -48,8 +48,14 @@ Gamblecore/
 
 ## Update Log
 
+### Update 4.85 - 4/9/2026
+1. Added Dice Duel UI & Functionality
+2. Added Sfx
+3. Added Game Previews to home
+4. Bug Fixes
+
 ### Update 4.6 - 4/8/2026
-1. Added turn off unnessicary alerts feature in settings
+1. Added turn off unnecessary alerts feature in settings
 2. Added more game message features to the footer
 3. Bug fixes
 

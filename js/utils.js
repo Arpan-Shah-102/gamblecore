@@ -234,3 +234,13 @@ function addHigherLowerUpgradeLevel() {
 function getHigherLowerUpgradePrices() {
     return [75, 150, 225];
 }
+
+// getHigherLowerBetAmount(): setHigherLowerBetAmount(amount)
+// getHigherLowerUpgradeLevel(): addHigherLowerUpgradeLevel(), getHigherLowerUpgradePrices()
+
+function getDiceDuelBetAmount() {
+    return parseInt(localStorage.getItem("diceDuelBetAmount")) || 10;
+}
+function setDiceDuelBetAmount(amount) {
+    localStorage.setItem("diceDuelBetAmount", amount);
+}

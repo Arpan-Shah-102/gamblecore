@@ -65,14 +65,14 @@ body.dark {
             }
         }
         &.blue {
-            border-color: rgb(0, 0, 83);
-            box-shadow: 4px 4px 0px rgba(0, 0, 83, 0.5);
+            border-color: rgb(0, 0, 100);
+            box-shadow: 4px 4px 0px rgba(0, 0, 100, 0.5);
 
             &:hover {
                 box-shadow: none;
             }
             &:active {
-                box-shadow: 4px 4px 0px rgba(0, 0, 83, 0.5) inset;
+                box-shadow: 4px 4px 0px rgba(0, 0, 100, 0.5) inset;
             }
         }
         &.yellow {
@@ -224,11 +224,12 @@ button {
 
 .top-label {
     position: fixed;
+    user-select: none;
     top: 20px;
     z-index: 100;
     font-size: 30px;
     font-weight: bolder;
-    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.25);
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.25);
 }
 .money-label {
     left: 20px;
@@ -239,11 +240,11 @@ button {
     transition: all 0.1s ease-in-out;
 
     &:hover {
-        transform: translate(2px, 2px);
+        transform: translate(3px, 3px);
         text-shadow: none;
     }
     &:active {
-        transform: translate(2px, 2px) scale(0.9);
+        transform: translate(3px, 3px) scale(0.9);
     }
 }
 
