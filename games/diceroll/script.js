@@ -11,6 +11,7 @@ const rollSfx = [gameSfx.roll1, gameSfx.roll2, gameSfx.roll3];
 const dieSymbols = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
 const dieValues = [1, 2, 3, 4, 5, 6];
 let rollCount = 0;
+[playerRoll1, playerRoll2, computerRoll1, computerRoll2] = randomizeRolls();
 
 let playerDie = document.querySelectorAll(".player-die");
 let computerDie = document.querySelectorAll(".computer-die");
@@ -71,44 +72,8 @@ rollBtn.addEventListener("click", () => {
 function classicGameMode() {
     [playerRoll1, playerRoll2, computerRoll1, computerRoll2] = randomizeRolls();
     rollBtn.disabled = true;
-    betAmountInput.disabled = true;
+    roll(false);
 
-    playSound(rollSfx[Math.floor(Math.random() * rollSfx.length)]);
-    playerDie[0].parentElement.classList.add("rolling");
-    for (let i = 0; i < 24; i++) {
-        setTimeout(() => {
-            playerDie[0].textContent = dieSymbols[Math.floor(Math.random() * 6)];
-            playerDie[1].textContent = dieSymbols[Math.floor(Math.random() * 6)];
-        }, i * 50);
-    }
-    setTimeout(() => {
-        playerDie[0].textContent = dieSymbols[playerRoll1];
-        playerDie[1].textContent = dieSymbols[playerRoll2];
-        playerDie[0].parentElement.classList.remove("rolling");
-
-        playerScore = playerRoll1 + playerRoll2 + 2;
-        playerScoreLabel.textContent = `${playerScore < 10 ? "0" : ""}${playerScore}`;
-        updateFooterDelay(`You rolled ${playerScore}!`, 3000);
-    }, 1250);
-    setTimeout(() => {
-        playSound(rollSfx[Math.floor(Math.random() * rollSfx.length)]);
-        computerDie[0].parentElement.classList.add("rolling");
-        for (let i = 0; i < 24; i++) {
-            setTimeout(() => {
-                computerDie[0].textContent = dieSymbols[Math.floor(Math.random() * 6)];
-                computerDie[1].textContent = dieSymbols[Math.floor(Math.random() * 6)];
-            }, i * 50);
-        }
-    }, 1350);
-    setTimeout(() => {
-        computerDie[0].textContent = dieSymbols[computerRoll1];
-        computerDie[1].textContent = dieSymbols[computerRoll2];
-        computerDie[0].parentElement.classList.remove("rolling");
-
-        computerScore = computerRoll1 + computerRoll2 + 2;
-        computerScoreLabel.textContent = `${computerScore < 10 ? "0" : ""}${computerScore}`;
-        updateFooterDelay(`Computer rolled ${computerScore}!`);
-    }, 2600);
     setTimeout(() => {
         let alertMsg;
         if (playerScore > computerScore) {
@@ -142,59 +107,13 @@ function classicGameMode() {
             updateFooterDelay(alertMsg, 3000);
             resetGame();
         }, 750);
-    }, 2750);
+    }, 2700);
 }
 
 function pigGamemode() {
-    function roll() {
-        if (!practiceMode) {
-            calcMoney(rollCount > 0 ? 20 : 0);
-            updateMoneyLabel();
-        }
-        rollCount++;
-        rollBtn.disabled = true;
-        playSound(rollSfx[Math.floor(Math.random() * rollSfx.length)]);
-        playerDie[0].parentElement.classList.add("rolling");
-        for (let i = 0; i < 24; i++) {
-            setTimeout(() => {
-                playerDie[0].textContent = dieSymbols[Math.floor(Math.random() * 6)];
-                playerDie[1].textContent = dieSymbols[Math.floor(Math.random() * 6)];
-            }, i * 50);
-        }
-        setTimeout(() => {
-            playerDie[0].textContent = dieSymbols[playerRoll1];
-            playerDie[1].textContent = dieSymbols[playerRoll2];
-            playerDie[0].parentElement.classList.remove("rolling");
-
-            playerScore = playerRoll1 + playerRoll2 + 2;
-            playerScoreLabel.textContent = `${playerScore < 10 ? "0" : ""}${playerScore}`;
-            updateFooterDelay(`You rolled ${playerScore}!`, 3000);
-        }, 1250);
-        setTimeout(() => {
-            playSound(rollSfx[Math.floor(Math.random() * rollSfx.length)]);
-            computerDie[0].parentElement.classList.add("rolling");
-            for (let i = 0; i < 24; i++) {
-                setTimeout(() => {
-                    computerDie[0].textContent = dieSymbols[Math.floor(Math.random() * 6)];
-                    computerDie[1].textContent = dieSymbols[Math.floor(Math.random() * 6)];
-                }, i * 50);
-            }
-        }, 1350);
-        setTimeout(() => {
-            computerDie[0].textContent = dieSymbols[computerRoll1];
-            computerDie[1].textContent = dieSymbols[computerRoll2];
-            computerDie[0].parentElement.classList.remove("rolling");
-            
-            computerScore = computerRoll1 + computerRoll2 + 2;
-            computerScoreLabel.textContent = `${computerScore < 10 ? "0" : ""}${computerScore}`;
-            updateFooterDelay(`Computer rolled ${computerScore}!`, 1500);
-            rollBtn.disabled = false;
-        }, 2600);
-    }
-
     [playerRoll1, playerRoll2, computerRoll1, computerRoll2] = randomizeRolls();
     betAmountInput.disabled = true;
-    roll();
+    roll(false);
 
     setTimeout(() => {
         let alertMsg;
@@ -233,55 +152,10 @@ function pigGamemode() {
 }
 
 function blackjackGamemode() {
-    function roll() {
-        if (!practiceMode) {
-            calcMoney(rollCount > 0 ? 20 : 0);
-            updateMoneyLabel();
-        }
-        rollCount++;
-        rollBtn.disabled = true;
-        playSound(rollSfx[Math.floor(Math.random() * rollSfx.length)]);
-        playerDie[0].parentElement.classList.add("rolling");
-        for (let i = 0; i < 24; i++) {
-            setTimeout(() => {
-                playerDie[0].textContent = dieSymbols[Math.floor(Math.random() * 6)];
-                playerDie[1].textContent = dieSymbols[Math.floor(Math.random() * 6)];
-            }, i * 50);
-        }
-        setTimeout(() => {
-            playerDie[0].textContent = dieSymbols[playerRoll1];
-            playerDie[1].textContent = dieSymbols[playerRoll2];
-            playerDie[0].parentElement.classList.remove("rolling");
-
-            playerScore += playerRoll1 + playerRoll2 + 2;
-            playerScoreLabel.textContent = `${playerScore < 10 ? "0" : ""}${playerScore}`;
-            updateFooterDelay(`You rolled ${playerRoll1 + playerRoll2 + 2}!`, 3000);
-        }, 1250);
-        setTimeout(() => {
-            playSound(rollSfx[Math.floor(Math.random() * rollSfx.length)]);
-            computerDie[0].parentElement.classList.add("rolling");
-            for (let i = 0; i < 24; i++) {
-                setTimeout(() => {
-                    computerDie[0].textContent = dieSymbols[Math.floor(Math.random() * 6)];
-                    computerDie[1].textContent = dieSymbols[Math.floor(Math.random() * 6)];
-                }, i * 50);
-            }
-        }, 1350);
-        setTimeout(() => {
-            computerDie[0].textContent = dieSymbols[computerRoll1];
-            computerDie[1].textContent = dieSymbols[computerRoll2];
-            computerDie[0].parentElement.classList.remove("rolling");
-            
-            computerScore += computerRoll1 + computerRoll2 + 2;
-            computerScoreLabel.textContent = `${computerScore < 10 ? "0" : ""}${computerScore}`;
-            updateFooterDelay(`Computer rolled ${computerRoll1 + computerRoll2 + 2}!`, 1500);
-            rollBtn.disabled = false;
-        }, 2600);
-    }
-
     [playerRoll1, playerRoll2, computerRoll1, computerRoll2] = randomizeRolls();
     betAmountInput.disabled = true;
     roll();
+
     setTimeout(() => {
         let alertMsg;
         if (playerScore >= 21 || computerScore >= 21) {
@@ -321,55 +195,10 @@ function blackjackGamemode() {
 }
 
 function raceGamemode() {
-    function roll() {
-        if (!practiceMode) {
-            calcMoney(rollCount > 0 ? 20 : 0);
-            updateMoneyLabel();
-        }
-        rollCount++;
-        rollBtn.disabled = true;
-        playSound(rollSfx[Math.floor(Math.random() * rollSfx.length)]);
-        playerDie[0].parentElement.classList.add("rolling");
-        for (let i = 0; i < 24; i++) {
-            setTimeout(() => {
-                playerDie[0].textContent = dieSymbols[Math.floor(Math.random() * 6)];
-                playerDie[1].textContent = dieSymbols[Math.floor(Math.random() * 6)];
-            }, i * 50);
-        }
-        setTimeout(() => {
-            playerDie[0].textContent = dieSymbols[playerRoll1];
-            playerDie[1].textContent = dieSymbols[playerRoll2];
-            playerDie[0].parentElement.classList.remove("rolling");
-
-            playerScore += playerRoll1 + playerRoll2 + 2;
-            playerScoreLabel.textContent = `${playerScore < 10 ? "0" : ""}${playerScore}`;
-            updateFooterDelay(`You rolled ${playerRoll1 + playerRoll2 + 2}!`, 3000);
-        }, 1250);
-        setTimeout(() => {
-            playSound(rollSfx[Math.floor(Math.random() * rollSfx.length)]);
-            computerDie[0].parentElement.classList.add("rolling");
-            for (let i = 0; i < 24; i++) {
-                setTimeout(() => {
-                    computerDie[0].textContent = dieSymbols[Math.floor(Math.random() * 6)];
-                    computerDie[1].textContent = dieSymbols[Math.floor(Math.random() * 6)];
-                }, i * 50);
-            }
-        }, 1350);
-        setTimeout(() => {
-            computerDie[0].textContent = dieSymbols[computerRoll1];
-            computerDie[1].textContent = dieSymbols[computerRoll2];
-            computerDie[0].parentElement.classList.remove("rolling");
-            
-            computerScore += computerRoll1 + computerRoll2 + 2;
-            computerScoreLabel.textContent = `${computerScore < 10 ? "0" : ""}${computerScore}`;
-            updateFooterDelay(`Computer rolled ${computerRoll1 + computerRoll2 + 2}!`, 1500);
-            rollBtn.disabled = false;
-        }, 2600);
-    }
-
     [playerRoll1, playerRoll2, computerRoll1, computerRoll2] = randomizeRolls();
     betAmountInput.disabled = true;
     roll();
+
     setTimeout(() => {
         if (playerScore >= 100 || computerScore >= 100) {
             let alertMsg;
@@ -382,8 +211,8 @@ function raceGamemode() {
                 }
             } else if (playerScore >= 100) {
                 if (!practiceMode) {
-                    alertMsg = `You win! You earned ${moneyFormat(getDiceDuelBetAmount() * 3)}.`;
-                    calcMoney(Math.round(getDiceDuelBetAmount() * 3), "+");
+                    alertMsg = `You win! You earned ${moneyFormat(getDiceDuelBetAmount() * 5)}.`;
+                    calcMoney(Math.round(getDiceDuelBetAmount() * 5), "+");
                     updateMoneyLabel();
                 } else {
                     alertMsg = "You win!";
@@ -406,15 +235,70 @@ function raceGamemode() {
     }, 2700);
 }
 
+function roll(accumulate = true) {
+    if (!practiceMode) {
+        calcMoney(rollCount > 0 ? 20 : 0);
+        updateMoneyLabel();
+    }
+    rollCount++;
+    rollBtn.disabled = true;
+    playSound(rollSfx[Math.floor(Math.random() * rollSfx.length)]);
+    playerDie[0].parentElement.classList.add("rolling");
+    for (let i = 0; i < 24; i++) {
+        setTimeout(() => {
+            playerDie[0].textContent = dieSymbols[Math.floor(Math.random() * 6)];
+            playerDie[1].textContent = dieSymbols[Math.floor(Math.random() * 6)];
+        }, i * 50);
+    }
+    setTimeout(() => {
+        playerDie[0].textContent = dieSymbols[playerRoll1];
+        playerDie[1].textContent = dieSymbols[playerRoll2];
+        playerDie[0].parentElement.classList.remove("rolling");
+
+        if (accumulate) {
+            playerScore += playerRoll1 + playerRoll2 + 2;
+        } else {
+            playerScore = playerRoll1 + playerRoll2 + 2;
+        }
+        playerScoreLabel.textContent = `${playerScore < 10 ? "0" : ""}${playerScore}`;
+        updateFooterDelay(`You rolled ${playerRoll1 + playerRoll2 + 2}!`, 3000);
+    }, 1250);
+    setTimeout(() => {
+        playSound(rollSfx[Math.floor(Math.random() * rollSfx.length)]);
+        computerDie[0].parentElement.classList.add("rolling");
+        for (let i = 0; i < 24; i++) {
+            setTimeout(() => {
+                computerDie[0].textContent = dieSymbols[Math.floor(Math.random() * 6)];
+                computerDie[1].textContent = dieSymbols[Math.floor(Math.random() * 6)];
+            }, i * 50);
+        }
+    }, 1350);
+    setTimeout(() => {
+        computerDie[0].textContent = dieSymbols[computerRoll1];
+        computerDie[1].textContent = dieSymbols[computerRoll2];
+        computerDie[0].parentElement.classList.remove("rolling");
+        
+        if (accumulate) {
+            computerScore += computerRoll1 + computerRoll2 + 2;
+        } else {
+            computerScore = computerRoll1 + computerRoll2 + 2;
+        }
+        computerScoreLabel.textContent = `${computerScore < 10 ? "0" : ""}${computerScore}`;
+        updateFooterDelay(`Computer rolled ${computerRoll1 + computerRoll2 + 2}!`, 1500);
+        rollBtn.disabled = false;
+    }, 2600);
+}
 function randomizeRolls() {
     return [Math.floor(Math.random() * 6), Math.floor(Math.random() * 6), Math.floor(Math.random() * 6), Math.floor(Math.random() * 6)];
 }
-
 function resetGame() {
     rollBtn.disabled = false;
     betAmountInput.disabled = practiceMode ? true : false;
     playerScoreLabel.textContent = "00";
     computerScoreLabel.textContent = "00";
+    playerScore = 0;
+    computerScore = 0;
+    [playerRoll1, playerRoll2, computerRoll1, computerRoll2] = randomizeRolls();
     rollCount = 0;
 }
 
