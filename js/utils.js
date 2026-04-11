@@ -4,7 +4,7 @@ function getMoney() {
 function moneyFormat(amount) {
     return amount.toLocaleString( "en-US", { style: "currency", currency: "USD" } );
 }
-function calcMoney(amount, operation) {
+function calcMoney(amount, operation = "+") {
     const currentMoney = getMoney();
     if (operation === "+") {
         localStorage.setItem("money", currentMoney + amount);
@@ -243,4 +243,21 @@ function getDiceDuelBetAmount() {
 }
 function setDiceDuelBetAmount(amount) {
     localStorage.setItem("diceDuelBetAmount", amount);
+}
+
+function getDiceDuelGamemodesUnlocked() {
+    return JSON.parse(localStorage.getItem("diceDuelGamemodesUnlocked")) || ["classic"];
+}
+function unlockDiceDuelGamemode(gamemode) {
+    let gamemodes = getDiceDuelGamemodesUnlocked();
+    if (!gamemodes.includes(gamemode)) {
+        gamemodes.push(gamemode);
+        localStorage.setItem("diceDuelGamemodesUnlocked", JSON.stringify(gamemodes));
+    }
+}
+function getDiceDuelCurrentGamemode() {
+    return localStorage.getItem("diceDuelCurrentGamemode") || "classic";
+}
+function setDiceDuelCurrentGamemode(gamemode) {
+    localStorage.setItem("diceDuelCurrentGamemode", gamemode);
 }

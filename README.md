@@ -42,11 +42,20 @@ Gamblecore/
 ## How to Play
 
 1. Open https://arpan-shah-102.github.io/gamblecore/ in your browser
-2. Click on unlocked games to play
-3. Earn money to unlock locked games
+2. Click on games to unlock
+3. Earn more money to unlock more games
 4. Use settings to save progress, change theme, or mute audio
+5. Have fun!
 
 ## Update Log
+
+### Update 5.35 - 4/10/2026
+1. Added shop to dice duel
+2. Added Race gamemode to dice duel
+3. Added Pig gamemode to dice duel
+4. Added Blackjack gamemode to dice duel
+5. Fixed few bugs from different games
+6. Minor Bug Fixes
 
 ### Update 4.85 - 4/9/2026
 1. Added Dice Duel UI & Functionality
