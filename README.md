@@ -50,6 +50,10 @@ Gamblecore/
 ## Update Log
 
 ### Update 5.35 - 4/10/2026
+1. Optimized diceroll code
+2. Fixed Diceroll bugs
+
+### Update 5.3 - 4/10/2026
 1. Added shop to dice duel
 2. Added Race gamemode to dice duel
 3. Added Pig gamemode to dice duel
