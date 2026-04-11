@@ -145,7 +145,11 @@ function prizeWon(symbol, multiplier) {
 function resetGame() {
     scratchCardBody.style.display = "none";
     cardOptions.style.display = "grid";
-    terminal.textContent = "Buy a scratch card to play!";
+    setTimeout(() => {
+        if (terminal.textContent != "Click a Cell to Scratch!" && terminal.textContent != "Buy a scratch card to play!") {
+            terminal.textContent = "Buy a scratch card to play!";
+        }
+    }, 2000);
     totalScratched = 0;
     scrachedUnits = [];
     if (!practiceMode) {updateMoneyLabel();}

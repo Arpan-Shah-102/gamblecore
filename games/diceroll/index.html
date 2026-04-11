@@ -37,6 +37,36 @@
                 <label>Bet Amount: <input class="bet-amount" type="number" max="1000" min="1" value="10"></label>
                 <button class="roll-btn blue">Roll</button>
             </section>
+
+            <section class="game-feature-section gamemodes">
+                <h2>Select Gamemode</h2>
+                <select class="gamemode-select">
+                    <option value="classic">Classic 🎲</option>
+                    <option disabled value="pig">Pig 🐷</option>
+                    <option disabled value="blackjack">Blackjack 🃏</option>
+                    <option disabled value="race">Race 🎯</option>
+                </select>
+                <div class="block gamemode-purchase-cont basic-cont">
+                    <div class="gamemode-row basic-row over-under">
+                        <abbr title="First to roll two 1s loses!">
+                            <h2>Pig</h2>
+                            <button class="red buy" data-index="1" value="pig" data-price="100">$100.00</button>
+                        </abbr>
+                    </div>
+                    <div class="gamemode-row basic-row blackjack">
+                        <abbr title="Get closer to 21 than the AI!">
+                            <h2>Blackjack</h2>
+                            <button class="red buy" data-index="2" value="blackjack" data-price="200">$200.00</button>
+                        </abbr>
+                    </div>
+                    <div class="gamemode-row basic-row odd-or-even">
+                        <abbr title="Get to 100 points before the AI!">
+                            <h2>Race</h2>
+                            <button class="red buy" data-index="3" value="race" data-price="300">$300.00</button>
+                        </abbr>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer>
