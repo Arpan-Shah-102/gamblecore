@@ -49,6 +49,10 @@ Gamblecore/
 
 ## Update Log
 
+### Update 5.4 - 4/12/2026
+1. Fixed Diceroll betting bug
+2. Created Basic UI for lottery (not implemented yet)
+
 ### Update 5.35 - 4/10/2026
 1. Optimized diceroll code
 2. Fixed Diceroll bugs
