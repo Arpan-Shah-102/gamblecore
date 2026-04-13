@@ -53,7 +53,7 @@ rollBtn.addEventListener("click", () => {
         updateFooterDelay("Not enough money to place the bet!", 3000);
         return;
     }
-    if (!practiceMode) {
+    if (!practiceMode && rollCount === 0) {
         calcMoney(getDiceDuelBetAmount(), "-");
         updateMoneyLabel();
     }
@@ -236,10 +236,6 @@ function raceGamemode() {
 }
 
 function roll(accumulate = true) {
-    if (!practiceMode) {
-        calcMoney(rollCount > 0 ? 20 : 0);
-        updateMoneyLabel();
-    }
     rollCount++;
     rollBtn.disabled = true;
     playSound(rollSfx[Math.floor(Math.random() * rollSfx.length)]);
