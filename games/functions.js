@@ -230,6 +230,27 @@ footerText.addEventListener("keydown", (e) => {
                 if (footerText.textContent !== "I'm sorry, Amani.") return;
                 footerText.innerHTML = defaultFooterText;
             }, 7500);
+        } else if (text == "daily prize" || text == "dp") {
+            const now = new Date()
+            playSound(sfx.cheat);
+            if (littleSecretLastUsed() == `${now.getMonth() +1}${now.getDate()}${now.getFullYear()}`) {
+                setTimeout(() => {alert("You have already claimed the daily prize today! Come back tomorrow.");}, 150);
+                footerText.textContent = "You have already claimed the daily prize today!";
+                setTimeout(() => {
+                    if (footerText.textContent !== "You have already claimed the daily prize today!") return;
+                    footerText.innerHTML = defaultFooterText;
+                }, 7500);
+                return;
+            }
+            littleSecretSetLastUsed(`${now.getMonth() +1}${now.getDate()}${now.getFullYear()}`);
+
+            calcMoney(100, "+");
+            if (!practiceMode) {updateMoneyLabel();}
+            footerText.textContent = "Claimed the daily prize! (+100 Money)";
+            setTimeout(() => {
+                if (footerText.textContent !== "Claimed the daily prize! (+100 Money)") return;
+                footerText.innerHTML = defaultFooterText;
+            }, 7500);
         } else {
             check1 = true;
             wrongFooterCommand();

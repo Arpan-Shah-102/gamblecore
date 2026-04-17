@@ -6,7 +6,7 @@ body.dark {
 
         &.selected {
             background-color: rgb(0, 71, 88);
-            border-color: rgb(19, 0, 139);
+            border-color: rgb(0, 176, 189);
             box-shadow: 2px 2px 0px rgba(0, 195, 255, 0.35) !important;
 
             &.side-ball:hover {
@@ -27,6 +27,21 @@ body.dark {
                 border-color: darkgreen;
                 box-shadow: inset 0 4px 8px rgba(144,238,144,0.6), inset 0 -4px 6px rgba(0, 0, 0, 0.3), 2px 2px 0px rgba(94, 255, 0, 0.25);
             }
+        }
+    }
+    & .ball-results {
+        background-color: #222 !important;
+        border-color: #ddd !important;
+        box-shadow: 4px 4px 0px rgba(221, 221, 221, 0.5) !important;
+    }
+
+    & .game-feature-section.upgrades .basic-row {
+        background-color: #222;
+        border-color: #ddd;
+        box-shadow: 4px 4px 0px rgba(221, 221, 221, 0.5);
+
+        & > h2 {
+            text-shadow: 2px 2px 0px rgba(221, 221, 221, 0.25);
         }
     }
 }
@@ -59,6 +74,11 @@ body.dark {
                 box-shadow: inset 0 4px 8px rgba(255,255,255,0.4), inset 0 -4px 6px rgba(0,0,0,0.2), 2px 2px 0 rgba(71, 61, 139, 0.5);
             }
         }
+        &.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
         &.match {
             background-color: lightgreen;
             border-color: green;
@@ -86,6 +106,16 @@ body.dark {
         &.ball-results {
             display: none;
             margin-bottom: 10px;
+            background-color: #ccc;
+            border-radius: 8px;
+            border: 4px solid black;
+            box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            overflow: hidden;
+
+            & .rolling {
+                animation: roll 0.1s infinite linear;
+            }
         }
     }
     & .ball-results.shown {
@@ -113,5 +143,78 @@ body.dark {
                 box-shadow: none;
             }
         }
+    }
+    & .controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+
+        align-items: center;
+        & .option-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+    }
+    & .terminal {
+        text-align: center;
+        overflow-wrap: break-word;
+        word-break: normal;
+        text-wrap: pretty;
+    }
+}
+
+@keyframes roll {
+    0% {transform: translateY(-75%);}
+    50% {transform: translateY(0%);}
+    100% {transform: translateY(75%);}
+}
+
+.game-feature-section.upgrades {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    & .basic-cont {
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        justify-content: center;
+
+        & .basic-row {
+            width: 100%;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+
+            background-color: white;
+            border-radius: 12px;
+            border: 4px solid black;
+            padding: 20px;
+            box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+
+            & > h2 {
+                text-align: center;
+                text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+            }
+            & > button {
+                width: 120px;
+
+                &.bought {
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .controls > button.option-btn {
+        font-size: 14px;
     }
 }

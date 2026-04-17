@@ -78,7 +78,7 @@ betAmountInput.addEventListener("blur", () => {
     } else if (betAmount > 1000) {
         betAmountInput.value = 1000;
     }
-    if (betAmount > getMoney()) {
+    if (betAmount > getMoney() && betAmount <= 1000) {
         betAmountInput.value = getMoney();
     }
     setSelectedSideAndBet(selectedSideAndBet.side, betAmountInput.value);
