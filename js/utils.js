@@ -65,6 +65,13 @@ function toggleAlertsDisabled() {
     localStorage.setItem("alertsDisabled", !disabled);
 }
 
+function littleSecretLastUsed() {
+    return parseInt(localStorage.getItem("littleSecretLastUsed")) || 0;
+}
+function littleSecretSetLastUsed(timestamp) {
+    localStorage.setItem("littleSecretLastUsed", timestamp);
+}
+
 // getMoney(): moneyFormat(amount), calcMoney(amount, operation), setMoney(amount), enoughMoney(amount), updateMoneyLabel()
 // getOwnedGames(): addGame(gameID), gameOwned(gameID)
 // isMuted(): toggleMute()
@@ -260,4 +267,19 @@ function getDiceDuelCurrentGamemode() {
 }
 function setDiceDuelCurrentGamemode(gamemode) {
     localStorage.setItem("diceDuelCurrentGamemode", gamemode);
+}
+
+// getDiceDuelBetAmount(): setDiceDuelBetAmount(amount)
+// getDiceDuelGamemodesUnlocked(): unlockDiceDuelGamemode(gamemode)
+// getDiceDuelCurrentGamemode(): setDiceDuelCurrentGamemode(gamemode)
+
+function getLotteryMatchesUnlocked() {
+    return JSON.parse(localStorage.getItem("lotteryMatchesUnlocked")) || [1, 2];
+}
+function addLotteryMatchesUnlocked(value) {
+    let matches = getLotteryMatchesUnlocked();
+    if (!matches.includes(value)) {
+        matches.push(value);
+        localStorage.setItem("lotteryMatchesUnlocked", JSON.stringify(matches));
+    }
 }

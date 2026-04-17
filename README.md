@@ -47,7 +47,20 @@ Gamblecore/
 4. Use settings to save progress, change theme, or mute audio
 5. Have fun!
 
+### If you find any bugs, please let me know!
+
 ## Update Log
+
+### Update 5.8 - 4/16/2026
+1. Added functionality to Lottery
+2. Added lottery preview to menu
+3. UI updates in lottery
+4. Added the ability to view prizes for lottery
+5. Set the ability to buy more prizes
+6. Added animations and SFX to lottery
+7. Fixed bet Amount Input on many games
+8. Added way to get money daily through footer
+9. Bug Fixes
 
 ### Update 5.4 - 4/12/2026
 1. Fixed Diceroll betting bug
