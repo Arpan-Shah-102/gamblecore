@@ -51,6 +51,11 @@ Gamblecore/
 
 ## Update Log
 
+### Update 5.9 - 4/21/2026
+1. Updated War UI (a little bit)
+2. Fixed bet amount input bugs across all inputs
+3. Bug Fixes
+
 ### Update 5.8 - 4/16/2026
 1. Added functionality to Lottery
 2. Added lottery preview to menu
