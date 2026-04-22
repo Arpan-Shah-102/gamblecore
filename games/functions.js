@@ -230,11 +230,11 @@ footerText.addEventListener("keydown", (e) => {
                 if (footerText.textContent !== "I'm sorry, Amani.") return;
                 footerText.innerHTML = defaultFooterText;
             }, 7500);
-        } else if (text == "daily prize" || text == "dp") {
+        } else if (text == "daily prize" || text == "dp" || text == "daily reward" || text == "dr") {
             const now = new Date()
             playSound(sfx.cheat);
             if (littleSecretLastUsed() == `${now.getMonth() +1}${now.getDate()}${now.getFullYear()}`) {
-                setTimeout(() => {alert("You have already claimed the daily prize today! Come back tomorrow.");}, 150);
+                if (!getAlertsDisabled()) setTimeout(() => {alert("You have already claimed the daily prize today! Come back tomorrow.");}, 150);
                 footerText.textContent = "You have already claimed the daily prize today!";
                 setTimeout(() => {
                     if (footerText.textContent !== "You have already claimed the daily prize today!") return;

@@ -217,7 +217,7 @@ buyMatchesBtns.forEach((btn, index) => {
         btn.classList.add("bought");
         btn.textContent = "Unlocked!";
 
-        if (!getAlertsDisabled()) {alert(`You have unlocked the ${btn.value}/5 match prize!`);}
+        if (!getAlertsDisabled()) setTimeout(() => {alert(`You have unlocked the ${btn.value}/5 match prize!`);}, 150);
         updateFooterDelay(`You have unlocked the ${btn.value}/5 match prize!`);
     });
 });

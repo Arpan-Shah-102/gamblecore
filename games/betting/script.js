@@ -27,7 +27,7 @@ betAmountInput.addEventListener("blur", () => {
     } else if (betAmount > 1000) {
         betAmountInput.value = 1000;
     }
-    if (betAmount > getMoney()) {
+    if (betAmount > getMoney() && getMoney() < 1000) {
         betAmountInput.value = getMoney();
     }
     setBettingBetAmount(betAmountInput.value);
