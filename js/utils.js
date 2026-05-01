@@ -76,10 +76,101 @@ function littleSecretSetLastUsed(timestamp) {
 // getOwnedGames(): addGame(gameID), gameOwned(gameID)
 // isMuted(): toggleMute()
 // getCurrentTheme(): setCurrentTheme(theme)
+// getAlertsDisabled(): toggleAlertsDisabled()
+// littleSecretLastUsed(): littleSecretSetLastUsed(timestamp)
 
-function gameOverCheck() {
-
+function incrementSomething(key) {
+    let value = parseInt(localStorage.getItem(key)) || 0;
+    value++;
+    localStorage.setItem(key, value);
 }
+
+function getTotalSlotSpins() {
+    return parseInt(localStorage.getItem("totalSlotSpins")) || 0;
+}
+function incrementTotalSlotSpins() {
+    incrementSomething("totalSlotSpins");
+}
+function getTotalWarPlays() {
+    return parseInt(localStorage.getItem("totalWarPlays")) || 0;
+}
+function incrementTotalWarPlays() {
+    incrementSomething("totalWarPlays");
+}
+function getTotalCoinsFlipped() {
+    return parseInt(localStorage.getItem("totalCoinsFlipped")) || 0;
+}
+function incrementTotalCoinsFlipped() {
+    incrementSomething("totalCoinsFlipped");
+}
+function getTotalRouletteSpins() {
+    return parseInt(localStorage.getItem("totalRouletteSpins")) || 0;
+}
+function incrementTotalRouletteSpins() {
+    incrementSomething("totalRouletteSpins");
+}
+function getTotalHigherLowerPlays() {
+    return parseInt(localStorage.getItem("totalHigherLowerPlays")) || 0;
+}
+function incrementTotalHigherLowerPlays() {
+    incrementSomething("totalHigherLowerPlays");
+}
+function getTotalBlackjackPlays() {
+    return parseInt(localStorage.getItem("totalBlackjackPlays")) || 0;
+}
+function incrementTotalBlackjackPlays() {
+    incrementSomething("totalBlackjackPlays");
+}
+function getTotalPokerPlays() {
+    return parseInt(localStorage.getItem("totalPokerPlays")) || 0;
+}
+function incrementTotalPokerPlays() {
+    incrementSomething("totalPokerPlays");
+}
+function getTotalDiceDuelPlays() {
+    return parseInt(localStorage.getItem("totalDiceDuelPlays")) || 0;
+}
+function incrementTotalDiceDuelPlays() {
+    incrementSomething("totalDiceDuelPlays");
+}
+function getTotalScratchCardsScratched() {
+    return parseInt(localStorage.getItem("totalScratchCardsScratched")) || 0;
+}
+function incrementTotalScratchCardsScratched() {
+    incrementSomething("totalScratchCardsScratched");
+}
+function getTotalBingoPlays() {
+    return parseInt(localStorage.getItem("totalBingoPlays")) || 0;
+}
+function incrementTotalBingoPlays() {
+    incrementSomething("totalBingoPlays");
+}
+function getTotalBettingPlays() {
+    return parseInt(localStorage.getItem("totalBettingPlays")) || 0;
+}
+function incrementTotalBettingPlays() {
+    incrementSomething("totalBettingPlays");
+}
+function getTotalLotteryPlays() {
+    return parseInt(localStorage.getItem("totalLotteryPlays")) || 0;
+}
+function incrementTotalLotteryPlays() {
+    incrementSomething("totalLotteryPlays");
+}
+
+// incrementSomething(key)
+// getTotalSlotSpins(): incrementTotalSlotSpins()
+// getTotalWarPlays(): incrementTotalWarPlays()
+// getTotalCoinsFlipped(): incrementTotalCoinsFlipped()
+// getTotalRouletteSpins(): incrementTotalRouletteSpins()
+// getTotalHigherLowerPlays(): incrementTotalHigherLowerPlays()
+// getTotalBlackjackPlays(): incrementTotalBlackjackPlays()
+// getTotalPokerPlays(): incrementTotalPokerPlays()
+// getTotalDiceDuelPlays(): incrementTotalDiceDuelPlays()
+// getTotalScratchCardsScratched(): incrementTotalScratchCardsScratched()
+// getTotalBingoPlays(): incrementTotalBingoPlays()
+// getTotalBettingPlays(): incrementTotalBettingPlays()
+// getTotalLotteryPlays(): incrementTotalLotteryPlays()
 
 function getSlotSymbols() {
     return JSON.parse(localStorage.getItem("slotSymbols")) || ["7️⃣", "🍒", "💎", "⭐", "🍉", "🍊"];

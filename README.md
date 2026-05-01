@@ -51,6 +51,11 @@ Gamblecore/
 
 ## Update Log
 
+Add guarnteed win first try 
+
+### Update 6.1 - 4/30/2026
+1. Added gambling psychology (first few plays always gets a prize)
+
 ### Update 5.9 - 4/21/2026
 1. Updated War UI (a little bit)
 2. Fixed bet amount input bugs across all inputs
