@@ -68,6 +68,15 @@ function spin() {
     spinLever.removeEventListener("click", spin);
     let finalSymbols = [randomSlotSymbol(), randomSlotSymbol(), randomSlotSymbol()];
 
+    if (getTotalSlotSpins() == 0) {
+        finalSymbols = ["7️⃣", "7️⃣", "7️⃣"];
+    } else if (getTotalSlotSpins() == 1) {
+        finalSymbols = [["🍒", "💎"][Math.floor(Math.random() * 2)], ["🍒", "💎"][Math.floor(Math.random() * 2)], ["💎", "🍒"][Math.floor(Math.random() * 2)]];
+    } else if (getTotalSlotSpins() == 2) {
+        finalSymbols = [["⭐", "🍉", "🍊"][Math.floor(Math.random() * 3)], ["⭐", "🍉", "🍊"][Math.floor(Math.random() * 3)], ["⭐", "🍉", "🍊"][Math.floor(Math.random() * 3)]];
+    }
+    incrementTotalSlotSpins();
+
     for (let i = 0; i < 25; i++) {
         setTimeout(() => {
             slotsDisplay[0].classList.add("spinning");

@@ -73,6 +73,14 @@ betButtons.forEach((btn, index) => {
             calcMoney(getBettingBetAmount(), "-");
             updateMoneyLabel();
         }
+        if (getTotalBettingPlays() == 0) {
+            allHorseSpeeds[horseNum] = goldenCarrotSpeed;
+        } else if (getTotalBettingPlays() == 1 && Math.random() < 0.5) {
+            allHorseSpeeds[horseNum] = goldenCarrotSpeed;
+        } else if (getTotalBettingPlays() == 2 && Math.random() < 0.25) {
+            allHorseSpeeds[horseNum] = goldenCarrotSpeed;
+        }
+        incrementTotalBettingPlays();
     });
 });
 

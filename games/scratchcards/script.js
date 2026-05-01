@@ -69,6 +69,14 @@ scratchCardUnits.forEach(unit => {
         unit.classList.add("scratched");
         unit.classList.remove("unscratched");
         let symbol = symbols[Math.floor(Math.random() * symbols.length)];
+        if (getTotalScratchCardsScratched() == 0 && Math.random(0) > 0.15) {
+            symbol = "🔥";
+        } else if (getTotalScratchCardsScratched() == 1 && Math.random(0) > 0.15 && Math.random() > 0.5) {
+            symbol = "💰";
+        } else if (getTotalScratchCardsScratched() == 2 && Math.random(0) > 0.15 && Math.random() > 0.25) {
+            symbol = "🎉";
+        }
+
         unit.textContent = symbol;
         scrachedUnits.push(symbol);
         totalScratched++;
@@ -158,6 +166,7 @@ function resetGame() {
         unit.classList.add("unscratched");
         unit.textContent = "💲";
     });
+    incrementTotalScratchCardsScratched();
     updateThings();
 }
 

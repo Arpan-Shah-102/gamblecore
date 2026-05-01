@@ -93,6 +93,27 @@ betBtns.forEach(btn => {
                 }
             }
 
+            function rig() {
+                if (betType == "higher") {
+                    if (n2 <= n1) {
+                        n2 = n1 + 1;
+                    }
+                } else if (betType == "lower") {
+                    if (n2 >= n1) {
+                        n2 = n1 - 1;
+                    }
+                }
+            }
+
+            if (getTotalHigherLowerPlays() == 0) {
+                rig();
+            } else if (getTotalHigherLowerPlays() == 1 && Math.random() < 0.5) {
+                rig();
+            } else if (getTotalHigherLowerPlays() == 2 && Math.random() < 0.25) {
+                rig();
+            }
+            incrementTotalHigherLowerPlays();
+
             let alertMessage;
             if (betType == "higher" && n2 > n1) {
                 playSound(gameSfx.win);
@@ -164,6 +185,10 @@ function generateRandomNumbers() {
     n1 = Math.floor(Math.random() * 100) + 1;
     n2 = Math.floor(Math.random() * 100) + 1;
     if (n1 === n2) {n2 = (n2 % 100) + 1;}
+
+    if (getHigherLowerUpgradeLevel() >= 0 && getHigherLowerUpgradeLevel() < 3) {
+        n1 = Math.floor(Math.random() * 98) + 2;
+    }
 
     number1.textContent = n1;
     number2.textContent = "?";

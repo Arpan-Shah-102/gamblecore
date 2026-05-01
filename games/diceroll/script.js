@@ -71,6 +71,7 @@ rollBtn.addEventListener("click", () => {
 
 function classicGameMode() {
     [playerRoll1, playerRoll2, computerRoll1, computerRoll2] = randomizeRolls();
+    rigRolls();
     rollBtn.disabled = true;
     roll(false);
 
@@ -112,6 +113,7 @@ function classicGameMode() {
 
 function pigGamemode() {
     [playerRoll1, playerRoll2, computerRoll1, computerRoll2] = randomizeRolls();
+    rigRolls();
     betAmountInput.disabled = true;
     roll(false);
 
@@ -153,6 +155,7 @@ function pigGamemode() {
 
 function blackjackGamemode() {
     [playerRoll1, playerRoll2, computerRoll1, computerRoll2] = randomizeRolls();
+    rigRolls();
     betAmountInput.disabled = true;
     roll();
 
@@ -196,6 +199,7 @@ function blackjackGamemode() {
 
 function raceGamemode() {
     [playerRoll1, playerRoll2, computerRoll1, computerRoll2] = randomizeRolls();
+    rigRolls();
     betAmountInput.disabled = true;
     roll();
 
@@ -296,6 +300,16 @@ function resetGame() {
     computerScore = 0;
     [playerRoll1, playerRoll2, computerRoll1, computerRoll2] = randomizeRolls();
     rollCount = 0;
+}
+function rigRolls() {
+    if (getTotalDiceDuelPlays() === 0) {
+        [playerRoll1, playerRoll2, computerRoll1, computerRoll2] = [3, 5, 0, 4];
+    } else if (getTotalDiceDuelPlays() === 1 && Math.random() < 0.5) {
+        [playerRoll1, playerRoll2, computerRoll1, computerRoll2] = [2, 3, 1, 2];
+    } else if (getTotalDiceDuelPlays() === 2 && Math.random() < 0.25) {
+        [playerRoll1, playerRoll2, computerRoll1, computerRoll2] = [4, 5, 3, 4];
+    }
+    incrementTotalDiceDuelPlays();
 }
 
 let switchGamemode = document.querySelector(".gamemode-select");

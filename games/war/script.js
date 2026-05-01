@@ -95,6 +95,15 @@ drawCardBtn.addEventListener("click", () => {
     }
 
     let computerCardIdx = Math.floor(Math.random() * cards.length);
+    if (getTotalWarPlays() == 0) {
+        computerCardIdx = cards.findIndex(card => cardValues[card] == 2);
+    } else if (getTotalWarPlays() == 1 && Math.random() < 0.5) {
+        computerCardIdx = cards.findIndex(card => cardValues[card] == 2);
+    } else if (getTotalWarPlays() == 1 && Math.random() < 0.25) {
+        computerCardIdx = cards.findIndex(card => cardValues[card] == 2);
+    }
+    incrementTotalWarPlays();
+
     if (getWarUpgradeLevels().computer > 0) {
         let computerCardValue = cardValues[cards[computerCardIdx]];
         computerCardValue -= getWarUpgradeLevels().computer;

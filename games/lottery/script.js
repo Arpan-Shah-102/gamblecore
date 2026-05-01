@@ -59,6 +59,29 @@ function buyTicket() {
             winningNumbers.push(randomNumber);
         }
     }
+    function addWinningNumber(num) {
+        if (winningNumbers.length < 5 && !winningNumbers.includes(selectedNumbers[num])) {
+            winningNumbers.push(selectedNumbers[num]);
+        }
+    }
+    if (getTotalLotteryPlays() == 0) {
+        addWinningNumber(4);
+        addWinningNumber(2);
+        winningNumbers[0] = selectedNumbers[4];
+        winningNumbers[4] = selectedNumbers[2];
+    } else if (getTotalLotteryPlays() == 1 && Math.random() < 0.5) {
+        addWinningNumber(3);
+        addWinningNumber(1);
+        winningNumbers[2] = selectedNumbers[3];
+        winningNumbers[3] = selectedNumbers[1];
+    } else if (getTotalLotteryPlays() == 2 && Math.random() < 0.25) {
+        addWinningNumber(0);
+        addWinningNumber(1);
+        winningNumbers[1] = selectedNumbers[0];
+        winningNumbers[3] = selectedNumbers[1];
+    }
+    incrementTotalLotteryPlays();
+
     ballResults.forEach((ball, index) => {
         setTimeout(() => {
             playSound(gameSfx.ballPicking);
@@ -98,19 +121,19 @@ function buyTicket() {
             winnings = 42700;
             alertMsg = "Jackpot! 5/5 Matching!" + (practiceMode ? "" : " You won $42,700!");
             playSound(gameSfx.win);
-        } else if (matches == 4 && getLotteryMatchesUnlocked().includes(4)) {
+        } else if (matches >= 4 && getLotteryMatchesUnlocked().includes(4)) {
             winnings = 10800;
             alertMsg = "4/5 Matching!" + (practiceMode ? "" : " You won $10,800!");
             playSound(gameSfx.win);
-        } else if (matches == 3 && getLotteryMatchesUnlocked().includes(3)) {
+        } else if (matches >= 3 && getLotteryMatchesUnlocked().includes(3)) {
             winnings = 2400;
             alertMsg = "3/5 Matching!" + (practiceMode ? "" : " You won $2,400!");
             playSound(gameSfx.win);
-        } else if (matches == 2 && getLotteryMatchesUnlocked().includes(2)) {
+        } else if (matches >= 2 && getLotteryMatchesUnlocked().includes(2)) {
             winnings = 600;
             alertMsg = "2/5 Matching!" + (practiceMode ? "" : " You won $600!");
             playSound(gameSfx.win);
-        } else if (matches == 1 && getLotteryMatchesUnlocked().includes(1)) {
+        } else if (matches >= 1 && getLotteryMatchesUnlocked().includes(1)) {
             winnings = 200;
             alertMsg = "1/5 Matching!" + (practiceMode ? "" : " You won $200!");
             playSound(gameSfx.win);

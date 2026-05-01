@@ -40,6 +40,15 @@ function flipCoin() {
         }
         setTimeout(() => {
             let flipResult = Math.random() < (chance / 100) ? "heads" : "tails";
+            if (getTotalCoinsFlipped() == 0) {
+                flipResult = selectedSideAndBet.side;
+            } else if (getTotalCoinsFlipped() == 1 && Math.random() < 0.5) {
+                flipResult = selectedSideAndBet.side;
+            } else if (getTotalCoinsFlipped() == 2 && Math.random() < 0.25) {
+                flipResult = selectedSideAndBet.side;
+            }
+            incrementTotalCoinsFlipped();
+
             coin.classList.remove("flipping");
             coin.classList.remove("heads");
             coin.classList.remove("tails");
